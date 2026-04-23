@@ -1,0 +1,51 @@
+<%- include("header.ejs") %>
+
+<section class="px-4 py-10">
+  <div class="max-w-6xl mx-auto">
+    <a href="/buy" class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Back to collection
+    </a>
+
+    <div class="hero-surface !grid-cols-1 lg:!grid-cols-[0.95fr_1.05fr] !gap-10">
+      <div class="hero-visual__card hero-visual__card--main !shadow-none">
+        <img src="/public/product_images/<%= product.image %>" alt="<%= product.itemName %>" class="hero-visual__image !h-[620px]" />
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <p class="section-tag">Curated detail</p>
+        <h1 class="section-title mt-3"><%= product.itemName %></h1>
+        <p class="section-copy mt-4"><%= product.description %></p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="spotlight-card"><strong class="block mb-1">Category</strong><span><%= product.category %></span></div>
+          <div class="spotlight-card"><strong class="block mb-1">Section</strong><span><%= product.section %></span></div>
+          <div class="spotlight-card"><strong class="block mb-1">Size</strong><span><%= product.size %></span></div>
+          <div class="spotlight-card"><strong class="block mb-1">Condition</strong><span><%= product.ccondition %></span></div>
+        </div>
+
+        <div class="mt-8 mb-6">
+          <% if (product.new_price && product.new_price < product.price) { %>
+            <p class="product-card__price-old text-lg">₹<%= product.price %></p>
+            <p class="product-card__price !text-[2.1rem]">₹<%= product.new_price %></p>
+          <% } else { %>
+            <p class="product-card__price !text-[2.1rem]">₹<%= product.price %></p>
+          <% } %>
+        </div>
+
+        <form action="/cart/add/<%= product.cloth_id %>" method="POST" class="flex flex-wrap gap-4 items-center">
+          <button type="submit" class="hero-button hero-button--primary px-8">Add to cart</button>
+          <% if (!session.emailid) { %>
+            <p class="text-sm text-slate-500">Guest cart supported. Sign in only when you are ready to checkout.</p>
+          <% } else { %>
+            <a href="/cart" class="hero-button hero-button--secondary px-8">View bag</a>
+          <% } %>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("footer.ejs") %>

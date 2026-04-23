@@ -1,0 +1,48 @@
+<%- include("header.ejs") %>
+
+<div class="container profile-container d-block mt-5 ms-10">
+  <div class="flex min-w-72 gap-3 mx-8 mt-4">
+    <span>
+      <a href="/profile" class="inline-flex items-center text-gray-700 hover:text-blue-600 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mt-1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+      </a>
+    </span>
+    <h2 class="text-2xl font-semibold mb-6">My Listings</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-8">
+    <% clothes.forEach(item => { %>
+      <div class="bg-white border rounded-lg h-[70vh] text-center w-72 shadow">
+        <img src="/public/product_images/<%= item.image %>" alt="<%= item.name %>" class="w-full h-80 object-contain rounded my-2">
+        <h3 class="font-semibold"><%= item.name %></h3>
+        <p class="text-sm text-gray-600">₹ <%= item.price %></p>
+        <p class="text-sm">
+          Status:
+          <% if (item.status === 'approved') { %>
+            <span class="text-green-600 font-medium">Approved</span>
+          <% } else if (item.status === 'pending') { %>
+            <span class="text-yellow-600 font-medium">Pending</span>
+          <% } else if (item.status === 'rejected') { %>
+            <span class="text-red-600 font-medium">Rejected</span>
+          <% } %>
+        </p>
+        <div class="flex gap-2 ms-12 mt-4">
+          <a href="/edit_listing/<%= item.cloth_id %>">
+            <button type="button" class="w-24 text-center border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-800 hover:text-white">
+              Change
+            </button>
+          </a>
+          <form action="/delete_listing/<%= item.cloth_id %>" method="POST" class="inline-block">
+            <button type="submit" class="w-24 text-center border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-800 hover:text-white">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include("footer.ejs") %>

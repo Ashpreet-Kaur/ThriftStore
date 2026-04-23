@@ -1,0 +1,75 @@
+<%- include("user/user_header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="text-gray-800 bg-white text-[16px] leading-relaxed font-[Inter,sans-serif]">
+  <div class="max-w-4xl mx-auto px-6 py-12">
+
+    <!-- Page Header -->
+    <div class="flex items-center gap-3 mb-8">
+      <a href="/profile" class="text-gray-500 hover:text-blue-600">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 19.5L3 12l7.5-7.5M3 12h18" />
+        </svg>
+      </a>
+      <h1 class="text-3xl font-bold text-gray-900">Shipping & Delivery</h1>
+    </div>
+
+    <!-- Intro -->
+    <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+      We strive to deliver your orders as quickly and safely as possible. Here’s everything you need to know about our shipping and delivery process.
+    </p>
+
+    <!-- Shipping Details -->
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Shipping Details</h2>
+
+    <% const shippingInfo = [
+      { title: "Shipping Time", desc: "Orders are usually shipped within 1–2 business days after confirmation." },
+      { title: "Delivery Time", desc: "Delivery typically takes 3–7 business days, depending on your location." },
+      { title: "Free Shipping", desc: "We offer free standard shipping on orders above ₹499." }
+    ] %>
+
+    <% shippingInfo.forEach(info => { %>
+    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
+      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-900 text-lg"><%= info.title %></p>
+        <p class="text-gray-600 text-base mt-1"><%= info.desc %></p>
+      </div>
+    </div>
+    <% }) %>
+
+    <!-- Tracking Section -->
+    <h2 class="text-xl font-semibold text-gray-900 mt-10 mb-4">Tracking & Support</h2>
+
+    <% const supportInfo = [
+      { title: "Order Tracking", desc: "Track your order using the tracking link sent via email/SMS upon dispatch." },
+      { title: "Delivery Support", desc: "Facing issues with your delivery? Contact our support team for assistance." }
+    ] %>
+
+    <% supportInfo.forEach(info => { %>
+    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
+      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-900 text-lg"><%= info.title %></p>
+        <p class="text-gray-600 text-base mt-1"><%= info.desc %></p>
+      </div>
+    </div>
+    <% }) %>
+
+  </div>
+</body>
+</html>
+<%- include("user/footer.ejs") %>

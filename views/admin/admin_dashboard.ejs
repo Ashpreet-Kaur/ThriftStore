@@ -1,0 +1,65 @@
+<%- include("admin_header.ejs") %>
+
+<main class="admin-page max-w-7xl mx-auto px-6 py-10 space-y-8">
+  <section class="admin-panel p-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-center">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <img src="/public/images/admin.jpg" alt="Profile Photo" class="w-44 h-44 object-contain rounded-full border border-white/70 bg-white/60 p-3" />
+      <div>
+        <span class="admin-chip">Admin overview</span>
+        <h1 class="mt-4 text-5xl font-semibold text-slate-900" style="font-family: 'Cormorant Garamond', serif;">Ashpreet</h1>
+        <p class="mt-2 text-slate-500">Administrator dashboard for approvals, product inventory, and seller growth.</p>
+      </div>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="admin-stat">
+        <p class="admin-stat__label">Pending sellers</p>
+        <p class="admin-stat__value"><%= pendingSellers %></p>
+      </div>
+      <div class="admin-stat">
+        <p class="admin-stat__label">Pending clothes</p>
+        <p class="admin-stat__value"><%= pendingClothes %></p>
+      </div>
+      <div class="admin-stat">
+        <p class="admin-stat__label">Registered users</p>
+        <p class="admin-stat__value"><%= registeredUsers %></p>
+      </div>
+      <div class="admin-stat">
+        <p class="admin-stat__label">Registered sellers</p>
+        <p class="admin-stat__value"><%= registeredSellers %></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+    <div class="admin-panel p-8">
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div>
+          <p class="admin-chip">Recent activity</p>
+          <h2 class="text-3xl font-semibold mt-3" style="font-family: 'Cormorant Garamond', serif;">What needs attention</h2>
+        </div>
+        <a href="/admin/products" class="admin-button admin-button--secondary">Review products</a>
+      </div>
+      <ul class="space-y-4 text-sm text-slate-700">
+        <li class="flex items-start gap-3"><span>01</span><span>Seller approvals are waiting in the request queue.</span></li>
+        <li class="flex items-start gap-3"><span>02</span><span>Pending clothes still need validation before they become visible on the storefront.</span></li>
+        <li class="flex items-start gap-3"><span>03</span><span>Customer-facing inventory should be reviewed for stronger pricing and cleaner imagery.</span></li>
+      </ul>
+    </div>
+
+    <div class="admin-panel p-8">
+      <p class="admin-chip">Recommendations</p>
+      <h2 class="text-3xl font-semibold mt-3 mb-5" style="font-family: 'Cormorant Garamond', serif;">Next best actions</h2>
+      <ul class="space-y-4 text-sm text-slate-700">
+        <li>Restock interest is strongest around vintage outerwear and statement denim.</li>
+        <li>Flash-sale performance improves when discounted items are grouped by season and category.</li>
+        <li>Review unread customer queries quickly to reduce drop-off after checkout interest.</li>
+      </ul>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/admin/seller_requests" class="admin-button admin-button--primary">Seller requests</a>
+        <a href="/admin/pending_clothes" class="admin-button admin-button--secondary">Product approvals</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include("admin_footer.ejs") %>

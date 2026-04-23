@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="hero-section px-4 pt-6 md:pt-10">
+  <div class="swiper heroSlider max-w-7xl mx-auto">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--amber">
+          <div class="hero-copy" data-aos="fade-right">
+            <p class="hero-kicker">Editorial resale, made brighter</p>
+            <h1 class="hero-title">Build a wardrobe from pieces that already earned their second spotlight.</h1>
+            <p class="hero-description">A more colorful ReTrend storefront with elevated resale, bold styling, and a shopping flow that feels closer to a real fashion website.</p>
+            <div class="hero-actions">
+              <a href="#featured-collection" class="hero-button hero-button--primary">Shop the collection</a>
+              <a href="/buy" class="hero-button hero-button--secondary">See all products</a>
+            </div>
+            <div class="hero-stats reveal-on-scroll">
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">300+</span>
+                <span class="hero-stat-label">Pre-loved finds</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">24h</span>
+                <span class="hero-stat-label">Approval rhythm</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">100%</span>
+                <span class="hero-stat-label">Curated by condition</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" data-aos="fade-left">
+            <div class="hero-visual__card hero-visual__card--main floating-card">
+              <img src="/public/images/shopNow.avif" alt="Curated pre-loved fashion" class="hero-visual__image" />
+              <div class="hero-visual__caption">
+                <p class="hero-visual__eyebrow">Weekly spotlight</p>
+                <p class="hero-visual__title">Fresh thrift, styled like a boutique drop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--coral">
+          <div class="hero-copy">
+            <p class="hero-kicker">Guest shopping, simplified</p>
+            <h2 class="hero-title">Add to cart first. Sign in only when you're ready to check out.</h2>
+            <p class="hero-description">Browse, save, and compare items without friction. When it is time to finish the order, we ask for login so shipping and payment stay tied to a real account.</p>
+            <div class="hero-actions">
+              <a href="/cart" class="hero-button hero-button--primary">View your bag</a>
+              <a href="/login" class="hero-button hero-button--secondary">Account access</a>
+            </div>
+          </div>
+          <div class="hero-slide__quote">
+            <span class="accent-badge">New shopping flow</span>
+            <p class="hero-slide__quote-copy">Real storefront energy means less interruption. The bag stays open while the account step stays where it belongs: checkout.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--sage">
+          <div class="hero-copy">
+            <p class="hero-kicker">For sellers with good taste</p>
+            <h2 class="hero-title">List the pieces you no longer wear and let ReTrend curate the presentation.</h2>
+            <p class="hero-description">Seller requests, approved product flows, and cleaner product cards make the marketplace feel more polished on both sides.</p>
+            <div class="hero-actions">
+              <a href="/request-seller" class="hero-button hero-button--primary">Request seller access</a>
+              <a href="/admin_login" class="hero-button hero-button--secondary">Admin portal</a>
+            </div>
+          </div>
+          <div class="hero-slide__stack">
+            <div class="hero-stat-card floating-card">
+              <span class="hero-stat-value">Seller-ready</span>
+              <span class="hero-stat-label">Approval-based listings with a cleaner storefront finish</span>
+            </div>
+            <div class="hero-stat-card reveal-on-scroll">
+              <span class="hero-stat-value">Better admin view</span>
+              <span class="hero-stat-label">Sharper dashboard cards, product tables, and improved navigation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev hero-slider-prev"></div>
+    <div class="swiper-button-next hero-slider-next"></div>
+    <div class="swiper-pagination hero-slider-pagination"></div>
+  </div>
+</section>
+
+<section class="section-shell px-4" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto story-panel">
+    <div>
+      <p class="section-tag">Why ReTrend</p>
+      <h2 class="section-title">A calmer alternative to chaotic resale feeds.</h2>
+    </div>
+    <p class="section-copy">ReTrend started with a simple idea: good clothing should circulate, not disappear after one owner. We built a cleaner marketplace for pre-loved pieces that still feel current, wearable, and worth collecting.</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto spotlight-grid mt-8">
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">01</span>
+      <h3>Curated approval flow</h3>
+      <p>Only approved items make it live, so the storefront feels edited instead of cluttered.</p>
+    </article>
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">02</span>
+      <h3>Seller-friendly growth</h3>
+      <p>Request access, list pieces, and build trust through quality listings and polished product imagery.</p>
+    </article>
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">03</span>
+      <h3>Style with less waste</h3>
+      <p>Shop better pieces for longer use cycles, lower waste, and a more personal wardrobe.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-shell px-4" id="featured-collection">
+  <div class="section-heading text-center" data-aos="fade-up">
+    <p class="section-tag">Featured edit</p>
+    <h2 class="section-title">The pieces setting the tone this week</h2>
+    <p class="section-copy section-copy--center">A tighter selection of standout finds, chosen for shape, condition, and price.</p>
+  </div>
+  <%- include("featured_products", { featuredProducts, session }) %>
+</section>
+
+<section class="section-shell px-4">
+  <div class="editorial-banner max-w-7xl mx-auto" data-aos="zoom-in-up">
+    <div>
+      <p class="section-tag section-tag--light">New this week</p>
+      <h2 class="section-title section-title--light">Fresh arrivals with a cleaner silhouette and faster turnover.</h2>
+    </div>
+    <a href="/buy" class="hero-button hero-button--light">Browse all arrivals</a>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 px-2 pt-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+    <%- include("new_arrivals", { newArrivals, session }) %>
+  </div>
+</section>
+
+<section class="section-shell px-4">
+  <div class="section-heading text-center" data-aos="fade-up">
+    <p class="section-tag">Sale rail</p>
+    <h2 class="section-title">Marked-down pieces worth catching early</h2>
+    <p class="section-copy section-copy--center">Discounted finds that still keep the shape, finish, and versatility you want.</p>
+  </div>
+  <%- include("discounted_products", { discountedProducts, session }) %>
+</section>
+
+<section class="section-shell px-4">
+  <div class="max-w-7xl mx-auto cta-grid">
+    <div class="cta-panel" data-aos="fade-right">
+      <p class="section-tag">For sellers</p>
+      <h2 class="section-title">Turn your unused wardrobe into the next best find.</h2>
+      <p class="section-copy">Apply for seller access, upload your best pieces, and let ReTrend handle discovery through a sharper storefront experience.</p>
+      <a href="/request-seller" class="hero-button hero-button--primary">Request seller access</a>
+    </div>
+
+    <div class="faq-panel" data-aos="fade-left">
+      <p class="section-tag">Common questions</p>
+      <div class="faq-stack">
+        <article class="faq-item reveal-on-scroll">
+          <h3>Can I sell or trade my clothes?</h3>
+          <p>Yes. Apply for seller access first, then list pieces that meet the quality and presentation standards.</p>
+        </article>
+        <article class="faq-item reveal-on-scroll">
+          <h3>How is product quality checked?</h3>
+          <p>Each item is reviewed before approval, and condition details are shown on the product page.</p>
+        </article>
+        <article class="faq-item reveal-on-scroll">
+          <h3>What happens if something arrives wrong?</h3>
+          <p>If an order arrives damaged or clearly mismatched, contact the team within 7 days for support.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-shell px-4 pb-0">
+  <div class="contact-band max-w-7xl mx-auto" data-aos="fade-up">
+    <div>
+      <p class="section-tag section-tag--light">Stay in touch</p>
+      <h2 class="section-title section-title--light">Get first look access to fresh drops and seller updates.</h2>
+    </div>
+    <form class="contact-band__form">
+      <input type="text" name="name" placeholder="Your name" class="contact-band__input" />
+      <input type="email" name="email" placeholder="Email address" class="contact-band__input" />
+      <button type="submit" class="hero-button hero-button--light">Join the list</button>
+    </form>
+  </div>
+</section>
+
+<div class="overflow-hidden bg-[#102a31] text-white py-3 mt-12">
+  <div class="whitespace-nowrap animate-marquee text-center tracking-[0.25em] uppercase text-xs md:text-sm">
+    <% for(let i = 0; i < 80; i++) { %>
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    <% } %>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  if (document.querySelector(".featuredSwiper")) {
+    new Swiper(".featuredSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      speed: 850,
+      navigation: {
+        nextEl: ".featuredSwiper .swiper-button-next",
+        prevEl: ".featuredSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.4 },
+        768: { slidesPerView: 2.6 },
+        1024: { slidesPerView: 4 },
+        1280: { slidesPerView: 5 },
+      },
+    });
+  }
+
+  if (document.querySelector(".discountedSwiper")) {
+    new Swiper(".discountedSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      speed: 850,
+      navigation: {
+        nextEl: ".discountedSwiper .swiper-button-next",
+        prevEl: ".discountedSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.4 },
+        768: { slidesPerView: 2.6 },
+        1024: { slidesPerView: 4 },
+        1280: { slidesPerView: 5 },
+      },
+    });
+  }
+
+  if (document.querySelector(".heroSlider")) {
+    new Swiper(".heroSlider", {
+      slidesPerView: 1,
+      loop: true,
+      speed: 900,
+      autoplay: {
+        delay: 3800,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".hero-slider-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".hero-slider-next",
+        prevEl: ".hero-slider-prev",
+      },
+      keyboard: {
+        enabled: true,
+      },
+    });
+  }
+</script>

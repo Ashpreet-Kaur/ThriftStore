@@ -1,0 +1,106 @@
+<%- include("header.ejs") %>
+
+<section class="py-12 px-6 max-w-5xl mx-auto bg-white shadow rounded">
+  <h2 class="text-2xl font-semibold mb-6">Checkout</h2>
+
+  <% items.forEach(item => { %>
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b pb-4">
+      <!-- Product Info Left -->
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold text-gray-800"><%= item.itemName %></h3>
+        <p class="text-gray-600">Price: ₹<%= item.price %></p>
+        <p class="text-gray-600">Qty: <%= item.quantity %></p>
+      </div>
+
+      <!-- Image Right -->
+      <div class="w-32 h-32 ml-4">
+        <img src="/public/product_images/<%= item.image %>" alt="Product Image" class="w-full h-full object-cover rounded border" />
+      </div>
+    </div>
+  <% }); %>
+
+  <!-- User Info -->
+  <div class="mt-6">
+    <p class="mb-2"><strong>User:</strong> <%= name %></p>
+    <p class="mb-2"><strong>Email:</strong> <%= email %></p>
+    <p class="mb-4"><strong>Shipping Address:</strong> <%= address %></p>
+    <p class="text-xl font-semibold mb-6">
+      <strong>Total: ₹</strong><span id="finalTotal"><%= total %></span>
+    </p>
+  </div>
+
+  <!-- PayPal Button Trigger -->
+  <div class="text-right">
+    <button class="bg-black text-white px-6 py-2 rounded mb-4" onclick="showPayPal()">Pay with PayPal</button>
+  </div>
+
+  <!-- PayPal Button Container -->
+  <div id="paypal-button-wrapper" style="display:none;">
+    <div id="paypal-button-container"></div>
+  </div>
+</section>
+
+<!-- PayPal SDK (Use your sandbox client ID here) -->
+<script src="https://www.paypal.com/sdk/js?client-id=AUv7FmcuwMzZBXDyPIVAyjVIMdwQ3ec_O6HGNVpzOI0HuprzxXhUi8LQ8LsoQDoc2WQ_FF-TL5hvN0Xh&currency=USD"></script>
+
+<script>
+  function showPayPal() {
+    document.getElementById('paypal-button-wrapper').style.display = 'block';
+  }
+
+  // ✅ Get amount correctly
+  const inrAmount = parseFloat(document.getElementById("finalTotal").textContent);
+  const usdAmount = (inrAmount / 85).toFixed(2); // assume conversion
+  console.log("✅ INR:", inrAmount, "→ USD:", usdAmount);
+
+  paypal.Buttons({
+    createOrder: function (data, actions) {
+      console.log("🛒 Creating PayPal order for USD:", usdAmount);
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: usdAmount
+          }
+        }]
+      });
+    },
+
+    onApprove: function (data, actions) {
+      return actions.order.capture().then(function (details) {
+        console.log("✅ Payment approved:", details);
+
+        fetch('/success_payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            payerid: details.payer.payer_id,
+            merchantid: details.purchase_units[0].payee.merchant_id,
+            createtime: details.create_time,
+            transactionid: details.purchase_units[0].payments.captures[0].id,
+            amount: details.purchase_units[0].amount.value,
+            pname: 'Cart Checkout',
+            pqnty: 1,
+            ptype: 'Mixed',
+            pphoto: 'cart.png'
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = "/success_payment_page";
+          } else {
+            alert("Payment succeeded but server response failed.");
+          }
+        })
+        .catch(err => {
+          console.error("Error posting payment:", err);
+          alert("Payment was successful but something went wrong on server.");
+        });
+      });
+    }
+  }).render('#paypal-button-container');
+</script>
+
+
+
+<%- include("footer.ejs") %>

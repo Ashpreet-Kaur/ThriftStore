@@ -1,0 +1,31 @@
+<div class="swiper featuredSwiper product-swiper px-2 md:px-6 mt-10">
+  <div class="swiper-wrapper">
+    <% featuredProducts.forEach(product => { %>
+      <div class="swiper-slide">
+        <article class="product-card product-card--featured h-full">
+          <div class="product-card__image-wrap">
+            <img src="/public/product_images/<%= product.image %>" alt="Product Image" class="product-card__image" />
+            <span class="product-card__badge">Featured</span>
+          </div>
+          <div class="product-card__body">
+          <h3 class="product-card__title"><%= product.itemName || product.name %></h3>
+          <% if (product.new_price && product.new_price < product.price) { %>
+            <div class="product-card__price-row">
+              <span class="product-card__price-old">₹<%= product.price %></span>
+              <span class="product-card__price">₹<%= product.new_price %></span>
+            </div>
+          <% } else { %>
+            <p class="product-card__price">₹<%= product.price %></p>
+          <% } %>
+          <a href="/view_product/<%= product.cloth_id %>" class="product-card__link">View details</a>
+          </div>
+        </article>
+      </div>
+    <% }); %>
+    <div class="swiper-slide flex items-center justify-center">
+      <a href="/buy" class="showcase-more-card">Explore the full collection</a>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>

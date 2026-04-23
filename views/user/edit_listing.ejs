@@ -1,0 +1,57 @@
+<%- include("header.ejs") %>
+
+<div class="max-w-3xl mx-auto p-8 bg-white shadow rounded my-8">
+  <h2 class="text-xl font-bold mb-6">Edit Listing</h2>
+  <form action="/edit_listing/<%= item.cloth_id %>" method="POST" enctype="multipart/form-data" class="space-y-4">
+
+    <div>
+      <label class="block text-sm">Item Name</label>
+      <input type="text" name="itemName" value="<%= item.itemName %>" class="w-full border p-2 bg-gray-100" readonly />
+    </div>
+
+    <div>
+      <label class="block text-sm">Section</label>
+      <input type="text" name="section" value="<%= item.section %>" class="w-full border p-2 bg-gray-100" readonly />
+    </div>
+
+    <div>
+      <label class="block text-sm">Category</label>
+      <input type="text" name="category" value="<%= item.category %>" class="w-full border p-2 bg-gray-100" readonly />
+    </div>
+
+    <div>
+      <label class="block text-sm">Condition</label>
+      <select name="ccondition" class="w-full border p-2">
+        <option value="New" <%= item.ccondition === 'New' ? 'selected' : '' %>>New</option>
+        <option value="Like New" <%= item.ccondition === 'Like New' ? 'selected' : '' %>>Like New</option>
+        <option value="Good" <%= item.ccondition === 'Good' ? 'selected' : '' %>>Good</option>
+        <option value="Fair" <%= item.ccondition === 'Fair' ? 'selected' : '' %>>Fair</option>
+        <option value="Worn" <%= item.ccondition === 'Worn' ? 'selected' : '' %>>Worn</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-sm">Price (₹)</label>
+      <input type="number" name="price" value="<%= item.price %>" class="w-full border p-2" required />
+    </div>
+
+    <div>
+      <label class="block text-sm">Description</label>
+      <textarea name="description" class="w-full border p-2"><%= item.description %></textarea>
+    </div>
+
+    <div>
+      <label class="block text-sm">Change Image (optional)</label>
+      <input type="file" name="image" class="w-full" />
+      <% if (item.image) { %>
+        <img src="/public/product_images/<%= item.image %>" alt="Old Image" class="h-32 mt-2 rounded" />
+      <% } %>
+    </div>
+
+    <div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+    </div>
+  </form>
+</div>
+
+<%- include("footer.ejs") %>

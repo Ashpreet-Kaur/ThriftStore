@@ -1,0 +1,114 @@
+<%- include("header.ejs") %>
+
+<div class="container profile-container d-block mt-5">
+  <form method="POST" action="/request-seller">
+    <div class="px-10 flex flex-1 justify-center py-5">
+      <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div class="flex flex-wrap justify-between gap-3 p-4">
+          <div class="flex min-w-72 flex-col gap-3">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Become a Seller</h2>
+            <p class="text-[#47569e] text-sm">
+              Join our community of sellers and start sharing your unique style with the world. We're always looking for new talent to showcase on our platform.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="text-[#0d0f1c] text-lg font-bold px-4 pb-2 pt-4">Requirements</h3>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Quality Items</p>
+            <p class="text-[#47569e] text-sm">
+              We accept a wide range of clothing, accessories, and home goods. Items should be in good condition and reflect current trends.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Fashion-Forward</p>
+            <p class="text-[#47569e] text-sm">
+              Sellers should have a keen eye for style and a passion for fashion. We value creativity and individuality.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Customer Service</p>
+            <p class="text-[#47569e] text-sm">
+              We expect sellers to be responsive to customer inquiries and provide excellent service.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="text-[#0d0f1c] text-lg font-bold px-4 pb-2 pt-4">Application Process</h3>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Fill Out the Form</p>
+            <p class="text-[#47569e] text-sm">
+              Complete the application form with your personal information and a brief description of your style.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Submit Photos</p>
+            <p class="text-[#47569e] text-sm">
+              Submit 3-5 high-quality photos of items you plan to sell. Showcase your best pieces!
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-[#f8f9fc] px-4 min-h-[72px] py-2">
+          <div class="flex items-center justify-center rounded-lg bg-[#e6e9f4] size-12 text-[#0d0f1c]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[#0d0f1c] text-base font-medium">Review &amp; Approval</p>
+            <p class="text-[#47569e] text-sm">
+              Our team will review your application and notify you of the decision within 5-7 business days.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex px-4 py-3">
+          <button type="submit" class="w-36 bg-gray-800 text-white p-2 mt-2 rounded hover:bg-[#e9a852] transition duration-300">
+            Request Access
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%- include("footer.ejs") %>

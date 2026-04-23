@@ -1,0 +1,79 @@
+
+
+<%- include("header.ejs") %>
+
+<section class="py-16 px-6 min-h-[70vh]">
+  <% if (items.length === 0) { %>
+    <div class="max-w-3xl mx-auto flex flex-col items-center justify-center text-center text-gray-600 rounded-[2rem] border border-white/60 bg-white/70 px-8 py-16 shadow-[0_20px_70px_rgba(16,42,49,0.12)] backdrop-blur">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 2.293a1 1 0 001.414 1.414L7 13zm0 0h10m0 0l1 2m-3-2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+      <h2 class="text-3xl font-semibold mb-2">Your cart is empty</h2>
+      <p class="mb-6 text-sm md:text-base">Looks like you haven’t added anything to your cart yet.</p>
+      <a href="/buy" class="hero-button hero-button--primary px-6">
+        Start Shopping
+      </a>
+    </div>
+  <% } else { %>
+    <div class="max-w-6xl mx-auto grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <div>
+        <div class="mb-6">
+          <p class="section-tag">Shopping bag</p>
+          <h2 class="section-title !text-[2.6rem]">Your selected pieces</h2>
+          <% if (guestMode) { %>
+            <p class="section-copy max-w-2xl">You can build your cart without an account. Sign in only when you're ready to checkout and we will keep your items.</p>
+          <% } else { %>
+            <p class="section-copy max-w-2xl">Your saved bag is ready whenever you want to complete the order.</p>
+          <% } %>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6">
+          <% items.forEach(item => { %>
+            <article class="product-card !flex-row !overflow-hidden !rounded-[1.7rem] !bg-white/80 !shadow-[0_18px_50px_rgba(16,42,49,0.12)]">
+              <img src="/public/product_images/<%= item.image %>" alt="<%= item.itemName %>" class="w-full md:w-52 h-52 object-cover" />
+              <div class="flex flex-1 flex-col justify-between p-6">
+                <div>
+                  <h3 class="product-card__title"><%= item.itemName %></h3>
+                  <p class="text-slate-500 mt-2">Curated pre-loved piece ready for checkout.</p>
+                  <p class="product-card__price mt-3">₹ <%= item.price %></p>
+                </div>
+                <div class="mt-6 flex justify-between items-center gap-4">
+                  <form action="/cart/delete/<%= item.id %>" method="POST">
+                    <button type="submit" class="product-card__link px-4">Remove</button>
+                  </form>
+                  <div class="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-600">Qty: <%= item.quantity %></div>
+                </div>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+
+      <aside class="story-panel !grid-cols-1 !gap-6 h-fit sticky top-8">
+        <div>
+          <p class="section-tag">Order summary</p>
+          <h3 class="section-title !text-[2.2rem]">Total: ₹ <%= total %></h3>
+        </div>
+        <div class="space-y-3 text-slate-600">
+          <p>Items: <%= items.length %></p>
+          <p>Shipping estimate: Calculated at checkout</p>
+          <% if (guestMode) { %>
+            <p>Checkout requires login so we can save your address and order details securely.</p>
+          <% } else { %>
+            <p>Your account is ready for a faster checkout flow.</p>
+          <% } %>
+        </div>
+        <a href="/checkout" class="hero-button hero-button--primary w-full">
+          <% if (guestMode) { %>
+            Sign in to checkout
+          <% } else { %>
+            Proceed to checkout
+          <% } %>
+        </a>
+        <a href="/buy" class="hero-button hero-button--secondary w-full">Continue shopping</a>
+      </aside>
+    </div>
+  <% } %>
+</section>
+
+<%- include("footer.ejs") %>

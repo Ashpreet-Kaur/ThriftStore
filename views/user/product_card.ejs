@@ -1,0 +1,12 @@
+<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+  <a href="<%= isLoggedIn ? '/buy/' + product.id : '/login' %>">
+    <img src="/public/product_images/<%= product.image %>" alt="<%= product.name %>" class="w-full h-64 object-cover" />
+    <div class="p-4">
+      <h3 class="text-lg font-semibold mb-2"><%= product.name %></h3>
+     
+     
+      <p class="text-green-600 font-bold">₹ <%= product.price %></p>
+    </div>
+  </a>
+</div>
+

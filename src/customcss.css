@@ -1,0 +1,355 @@
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* translucent black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  animation: slideIn 0.4s ease-in-out;
+}
+.landingPage {
+  position: relative;
+  background: url("/public/images/home4.jpg") no-repeat top center/cover;
+  height: 80vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  text-align: center;
+}
+
+.landing-caption {
+  position: absolute;
+  bottom: 15rem;
+  font-size: 1rem !important;
+  left: 3rem;
+}
+
+.landing-caption p {
+  position: absolute;
+  text-align: left;
+  width: 400px;
+  bottom: 2rem; /* Adjust as needed */
+  font-size: 23px;
+
+  color: white; /* Optional, for visibility */
+  max-width: 300px; /* Optional */
+  font-weight: 700;
+}
+
+.second-section,
+.third-section,
+.fourth-section,
+.fifth-section,
+.second-section-about,
+.fourth-section-about,
+.fifth-section-about,
+.second-section-contact {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 80vh;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .second-section,
+  .third-section,
+  .second-section-about,
+  .second-section-contact {
+    flex-direction: column;
+    height: 100vh;
+  }
+  .second-right a {
+    width: 50vw;
+  }
+}
+.second-left,
+.second-right,
+.third-left,
+.third-right,
+.fourth-left,
+.fourth-right,
+.fifth-left,
+.fifth-right,
+.second-left-about,
+.second-right-about,
+.fourth-left-about,
+.fourth-right-about,
+.fifth-right-about,
+.fifth-left-about,
+.second-left-contact,
+.second-right-contact,
+.fourth-left-contact {
+  flex: 1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+}
+
+.second-left {
+  background: url("/public/images/hero2.jpeg") no-repeat center center/cover;
+  position: relative;
+  z-index: 2;
+}
+.fifth-left {
+  background: url("/public/images/Clothing\ Donation\ in\ Progress.png")
+    no-repeat center center/cover;
+  position: relative;
+  z-index: 2;
+}
+
+.third-right {
+  background: url("/public/images/model2.png") no-repeat top center/cover;
+  position: relative;
+  z-index: 2;
+}
+
+.fourth-right {
+  background: url("/public/images/donate.png") no-repeat center center/cover;
+  position: relative;
+  z-index: 2;
+}
+.second-left-about {
+  background: url("/public/images/about1.jpeg") no-repeat center center/cover;
+  position: relative;
+  z-index: 2;
+}
+.second-left-contact {
+  background: url("/public/images/contact.png") no-repeat center center/cover;
+  position: relative;
+  z-index: 2;
+}
+.third-left,
+.fourth-right {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  height: 100%;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-wrapper img {
+  position: absolute;
+
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.zoom-image {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-out;
+  transform-origin: center center;
+}
+
+.second-right,
+.fourth-left,
+.fifth-right,
+.second-right-about,
+.fourth-left-about,
+.fifth-right-about,
+.second-right-contact,
+.fourth-left-contact {
+  background-color: #0b576e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.7;
+}
+.second-right h2,
+.fourth-left h2,
+.fifth-right h2,
+.second-right-about h2,
+.fourth-left-about h2,
+.fifth-right-about h2,
+.contact-form h3,
+.fourth-left-contact h2 {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 800;
+}
+.second-right p,
+.fifth-right p,
+.fourth-left-about p,
+.fourth-left-contact p {
+  font-size: x-large;
+}
+
+.fourth-left-contact p {
+  text-align: left !important;
+  font-size: large !important;
+  margin-bottom: 50px;
+}
+.btn-action {
+  background-color: #011e27;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .second-left,
+  .third-left,
+  .fourth-left,
+  .fifth-left,
+  .second-left-about,
+  .fourth-left-about,
+  .fifth-left-about,
+  .second-left-contact,
+  .fourth-left-contact {
+    transform: translateY(-80px);
+  }
+  .fifth-left,
+  .fifth-left-about,
+  .fourth-left-about,
+  .fourth-left-contact {
+    height: 91.6vh !important;
+    bottom: 20;
+  }
+
+  .second-right a,
+  .fourth-left a,
+  .fifth-right a,
+  .second-right-about a,
+  .second-right-contact a {
+    width: 35vw;
+  }
+}
+.fourth-left {
+  background-color: #16312b !important;
+}
+.fifth-right {
+  background-color: #07434b !important;
+}
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  align-items: center;
+  color: white;
+  width: 70%;
+}
+.btn-home {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0;
+  height: 40px;
+}
+.sub-section {
+  text-align: center;
+  position: relative;
+  padding: 40px;
+  margin-bottom: 70px;
+}
+.sub-section h2 {
+  font-size: large;
+  font-weight: 600;
+}
+
+.second-right-about {
+  background-color: #063a4e;
+}
+.second-right-contact {
+  background-color: #113a38;
+}
+.fifth-left-about {
+  background: url("/public/images/model2.png") no-repeat top center/cover;
+  position: relative;
+  z-index: 2;
+}
+.fifth-right-about {
+  overflow-y: scroll;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 0 !important;
+  align-items: normal;
+}
+
+.contact-form {
+  width: 300px;
+  margin: 50px;
+  color: white;
+}
+
+.contact-form h3 {
+  letter-spacing: 2px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  /* padding: 8px 4px; */
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.contact-form button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  align-self: flex-start;
+}
+
+.contact-form button:hover {
+  background-color: white;
+  color: #033949;
+  transition: 0.3s;
+}
+
+.fourth-left-contact {
+  background: #033949;
+}
+
+

@@ -1,0 +1,51 @@
+<%- include("header.ejs") %>
+
+<section class="flex items-center justify-center min-h-[60vh] bg-gray-100 px-4">
+  <div class="bg-white shadow-lg rounded-xl max-w-xl w-full p-8 text-center">
+    
+    <div class="flex min-w-72 gap-3 mx-32">
+      <span>
+        <a href="/user_dashboard" class="inline-flex items-center text-gray-700 hover:text-blue-600 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mt-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+        </a>
+      </span>
+      <h2 class="text-2xl font-bold text-gray-700 mb-8">Seller Request Status</h2>
+    </div>
+
+    <% if (status === "pending") { %>
+      <p class="text-lg font-semibold text-blue-600 mb-4">Your request is pending</p>
+      <p class="text-gray-600 mb-6">
+        We are reviewing your request to sell on <strong>ReTrend</strong>. 
+        You will receive an email notification once your request has been processed.
+      </p>
+    <% } else if (status === "rejected") { %>
+      <p class="text-lg font-semibold text-red-600 mb-4">Your request was rejected</p>
+      <p class="text-gray-600 mb-6">
+        Unfortunately, your request to become a seller on <strong>ReTrend</strong> has been declined. 
+        You may contact support for more details or try again later.
+      </p>
+    <% } else if (status === "approved") { %>
+      <p class="text-lg font-semibold text-green-600 mb-4">You are now a seller!</p>
+      <p class="text-gray-600 mb-6">
+        Congratulations! Your request has been approved. You can now start listing your clothes for sale.
+      </p>
+    <% } else { %>
+      <p class="text-lg font-semibold text-gray-600 mb-4">No request found</p>
+      <p class="text-gray-600 mb-6">
+        You haven't submitted a seller request yet. Head to your profile and apply.
+      </p>
+    <% } %>
+
+    <button
+      onclick="window.location.href='/user_dashboard'"
+      class="inline-block w-24 bg-gray-800 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300"
+    >
+      Got it
+    </button>
+    
+  </div>
+</section>
+
+<%- include("footer.ejs") %>

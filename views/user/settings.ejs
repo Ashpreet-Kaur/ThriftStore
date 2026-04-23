@@ -1,0 +1,62 @@
+<%- include("header.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+</head>
+<body class="bg-gray-50">
+  <section class="px-4 py-6">
+    <div class="flex items-center gap-3 mb-6 mx-4">
+      <a href="/profile" class="inline-flex items-center text-gray-700 hover:text-blue-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+      </a>
+      <h2 class="text-2xl font-bold text-gray-800">Settings</h2>
+    </div>
+
+    <div class="space-y-2 mx-4">
+      <div class="flex items-center justify-between border-b py-4">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-geo-alt-fill text-lg"></i>
+          <span class="text-gray-800">Shipping Address</span>
+        </div>
+        <a href="/addAddress" class="text-gray-500 text-xl">&gt;</a>
+      </div>
+
+      <div class="flex items-center justify-between border-b py-4">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-key-fill text-lg"></i>
+          <span class="text-gray-800">Change Password</span>
+        </div>
+        <a href="/change_password" class="text-gray-500 text-xl">&gt;</a>
+      </div>
+
+      <div class="flex items-center justify-between border-b py-4">
+        <div class="flex items-start gap-2">
+          <i class="bi bi-globe2 text-lg mt-1"></i>
+          <div>
+            <span class="text-gray-800">India</span>
+            <small class="text-gray-500">English</small>
+          </div>
+        </div>
+        <img src="https://flagcdn.com/in.svg" alt="India Flag" class="w-6 h-4 object-cover" />
+      </div>
+    </div>
+
+    <div class="mx-4 mt-6">
+      <a href="/logout">
+        <button class="w-24 bg-black text-white py-2 rounded-lg hover:bg-gray-900 transition duration-200">
+          LOGOUT
+        </button>
+      </a>
+    </div>
+  </section>
+</body>
+</html>
+
+<%- include("footer.ejs") %>

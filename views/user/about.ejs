@@ -1,0 +1,81 @@
+<%- include("header.ejs") %>
+
+<main class="section-shell px-4 pb-8">
+  <section class="hero-surface max-w-7xl mx-auto hero-slide hero-slide--amber">
+    <div>
+      <p class="hero-kicker">About ReTrend</p>
+      <h1 class="hero-title">We built ReTrend to make second-hand fashion feel premium and practical.</h1>
+      <p class="hero-description">From curated approvals to easier browsing by Men, Women, and Kids, every part of the experience is designed to make circular shopping more trustworthy and enjoyable.</p>
+      <div class="hero-actions">
+        <a href="/buy" class="hero-button hero-button--primary">Explore Products</a>
+        <% if (session && session.emailid) { %>
+          <a href="/request-seller" class="hero-button hero-button--secondary">Become a Seller</a>
+        <% } else { %>
+          <a href="/register" class="hero-button hero-button--secondary">Create Account</a>
+        <% } %>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual__card hero-visual__card--main">
+        <img src="/public/images/shopNow.avif" alt="ReTrend Story" class="hero-visual__image" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell max-w-7xl mx-auto">
+    <div class="story-panel">
+      <div>
+        <p class="section-tag">Our Story</p>
+        <h2 class="section-title">Fashion should last longer than one season.</h2>
+      </div>
+      <p class="section-copy">ReTrend started to reduce fashion waste without reducing style. We help good clothing stay in use by connecting sellers, buyers, and conscious shoppers in one quality-first marketplace.</p>
+    </div>
+
+    <div class="spotlight-grid mt-8">
+      <article class="spotlight-card reveal-on-scroll">
+        <span class="spotlight-number">01</span>
+        <h3>Curated Quality</h3>
+        <p>Products are reviewed before they go live, so shoppers can browse with confidence.</p>
+      </article>
+      <article class="spotlight-card reveal-on-scroll">
+        <span class="spotlight-number">02</span>
+        <h3>Cleaner Catalogs</h3>
+        <p>Men, Women, and Kids categories are organized to make product discovery easier.</p>
+      </article>
+      <article class="spotlight-card reveal-on-scroll">
+        <span class="spotlight-number">03</span>
+        <h3>Impact at Scale</h3>
+        <p>Every reused item helps reduce textile waste and supports a circular economy.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell max-w-7xl mx-auto">
+    <div class="cta-grid">
+      <div class="cta-panel">
+        <p class="section-tag">Vision</p>
+        <h2 class="section-title">A resale platform that feels modern, not messy.</h2>
+        <p class="section-copy">We are focused on trusted listings, cleaner user journeys, and a better buying and selling experience for both logged-in and logged-out users.</p>
+      </div>
+      <div class="faq-panel">
+        <p class="section-tag">What’s next</p>
+        <div class="faq-stack">
+          <article class="faq-item">
+            <h3>Smarter matching</h3>
+            <p>Improved recommendations by section, size, and style preference.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Community-first growth</h3>
+            <p>More seller support and better visibility for high-quality listings.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Sustainability by design</h3>
+            <p>Lower waste through longer product life and better product circulation.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include("footer.ejs") %>

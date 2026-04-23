@@ -1,0 +1,36 @@
+
+<div class="swiper discountedSwiper product-swiper px-2 md:px-6 mt-10">
+  <div class="swiper-wrapper">
+    <% discountedProducts.forEach(product => { %>
+      <div class="swiper-slide">
+        <article class="product-card h-full">
+          <div class="product-card__image-wrap">
+            <img src="/public/product_images/<%= product.image %>" alt="Product Image" class="product-card__image" />
+            <span class="product-card__badge product-card__badge--sale">Sale</span>
+          </div>
+
+          <div class="product-card__body">
+          <h3 class="product-card__title"><%= product.itemName || product.name %></h3>
+
+     <% if (product.new_price && parseFloat(product.new_price) < parseFloat(product.price)) { %>
+            <div class="product-card__price-row">
+              <span class="product-card__price-old">₹<%= product.price %></span>
+              <span class="product-card__price">₹<%= product.new_price %></span>
+            </div>
+          <% } else { %>
+            <p class="product-card__price">₹<%= product.price %></p>
+          <% } %>
+
+          <a href="/view_product/<%= product.cloth_id %>" class="product-card__link">Add from details</a>
+          </div>
+        </article>
+      </div>
+    <% }) %>
+
+    <div class="swiper-slide flex items-center justify-center">
+      <a href="/buy" class="showcase-more-card">See every discounted piece</a>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>

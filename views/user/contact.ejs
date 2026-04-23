@@ -1,0 +1,90 @@
+<%- include("header.ejs") %>
+
+<main class="section-shell px-4 pb-8">
+  <section class="hero-surface max-w-7xl mx-auto hero-slide hero-slide--coral">
+    <div>
+      <p class="hero-kicker">Contact ReTrend</p>
+      <h1 class="hero-title">Need help with buying, selling, or orders? We’re here.</h1>
+      <p class="hero-description">This contact page works for everyone. Guests can ask questions before signup, and logged-in users can request support for listings, profile, or checkout issues.</p>
+      <div class="hero-actions">
+        <% if (session && session.emailid) { %>
+          <a href="/profile" class="hero-button hero-button--primary">Go to Profile</a>
+        <% } else { %>
+          <a href="/register" class="hero-button hero-button--primary">Create Account</a>
+        <% } %>
+        <a href="/buy" class="hero-button hero-button--secondary">Browse Products</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual__card hero-visual__card--main">
+        <img src="/public/images/shopNow.avif" alt="Contact ReTrend" class="hero-visual__image" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell max-w-7xl mx-auto">
+    <div class="cta-grid">
+      <div class="cta-panel">
+        <p class="section-tag">Send a message</p>
+        <h2 class="section-title">Reach out directly</h2>
+
+        <form class="space-y-4 mt-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="first-name"
+              placeholder="First name"
+              required
+              class="contact-band__input !bg-white !text-slate-800 !border-slate-200"
+            />
+            <input
+              type="text"
+              name="last-name"
+              placeholder="Last name"
+              required
+              class="contact-band__input !bg-white !text-slate-800 !border-slate-200"
+            />
+          </div>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            required
+            value="<%= session && session.emailid ? session.emailid : '' %>"
+            class="contact-band__input !bg-white !text-slate-800 !border-slate-200 w-full"
+          />
+
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="How can we help you?"
+            class="contact-band__input !bg-white !text-slate-800 !border-slate-200 w-full !rounded-2xl"
+          ></textarea>
+
+          <button type="submit" class="hero-button hero-button--primary">Send Message</button>
+        </form>
+      </div>
+
+      <div class="faq-panel">
+        <p class="section-tag">Support information</p>
+        <div class="faq-stack mt-4">
+          <article class="faq-item">
+            <h3>Email</h3>
+            <p>support@retrend.ca</p>
+          </article>
+          <article class="faq-item">
+            <h3>Hours</h3>
+            <p>Monday to Friday, 10:00 AM to 6:00 PM</p>
+          </article>
+          <article class="faq-item">
+            <h3>What we can help with</h3>
+            <p>Order issues, seller requests, listing updates, profile/account support.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include("footer.ejs") %>

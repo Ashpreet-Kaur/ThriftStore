@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReTrend</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/public/css/style.css" />
+  <link rel="stylesheet" href="/public/css/retrend-ui.css" />
+</head>
+
+<body class="retrend-shell bg-stone-50 text-slate-900">
+  <div class="ambient-orb ambient-orb-one"></div>
+  <div class="ambient-orb ambient-orb-two"></div>
+  <nav class="site-nav px-4 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <a href="/" class="brand-mark">
+        <span class="brand-mark__title">ReTrend</span>
+        <span class="brand-mark__subtitle">Second life for standout style</span>
+      </a>
+
+      <button
+        id="menu-toggle"
+        class="menu-toggle md:hidden focus:outline-none"
+        type="button"
+        aria-label="Toggle navigation"
+      >
+        <div class="w-6 h-0.5 bg-white mb-1"></div>
+        <div class="w-6 h-0.5 bg-white mb-1"></div>
+        <div class="w-6 h-0.5 bg-white"></div>
+      </button>
+
+      <div
+        id="menu"
+        class="menu-panel hidden md:flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-gray-50 text-base md:text-lg mt-4 md:mt-0"
+      >
+        <a href="/" class="nav-link">Home</a>
+        <a href="/buy" class="nav-link">Explore</a>
+        <a href="/cart" class="nav-link">Cart</a>
+
+        
+          <a href="/login" class="nav-link nav-link--cta flex items-center gap-1 justify-center">
+            Sign In
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0" />
+            </svg>
+          </a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    if (menuToggle && menu) {
+      menuToggle.addEventListener('click', function () {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('menu-panel--open');
+      });
+    }
+  </script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="hero-section px-4 pt-6 md:pt-10">
+  <div class="swiper heroSlider max-w-7xl mx-auto">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--amber">
+          <div class="hero-copy" data-aos="fade-right">
+            <p class="hero-kicker">Editorial resale, made brighter</p>
+            <h1 class="hero-title">Build a wardrobe from pieces that already earned their second spotlight.</h1>
+            <p class="hero-description">A more colorful ReTrend storefront with elevated resale, bold styling, and a shopping flow that feels closer to a real fashion website.</p>
+            <div class="hero-actions">
+              <a href="#featured-collection" class="hero-button hero-button--primary">Shop the collection</a>
+              <a href="/buy" class="hero-button hero-button--secondary">See all products</a>
+            </div>
+            <div class="hero-stats reveal-on-scroll">
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">300+</span>
+                <span class="hero-stat-label">Pre-loved finds</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">24h</span>
+                <span class="hero-stat-label">Approval rhythm</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="hero-stat-value">100%</span>
+                <span class="hero-stat-label">Curated by condition</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" data-aos="fade-left">
+            <div class="hero-visual__card hero-visual__card--main floating-card">
+              <img src="/public/images/shopNow.avif" alt="Curated pre-loved fashion" class="hero-visual__image" />
+              <div class="hero-visual__caption">
+                <p class="hero-visual__eyebrow">Weekly spotlight</p>
+                <p class="hero-visual__title">Fresh thrift, styled like a boutique drop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--coral">
+          <div class="hero-copy">
+            <p class="hero-kicker">Guest shopping, simplified</p>
+            <h2 class="hero-title">Add to cart first. Sign in only when you're ready to check out.</h2>
+            <p class="hero-description">Browse, save, and compare items without friction. When it is time to finish the order, we ask for login so shipping and payment stay tied to a real account.</p>
+            <div class="hero-actions">
+              <a href="/cart" class="hero-button hero-button--primary">View your bag</a>
+              <a href="/login" class="hero-button hero-button--secondary">Account access</a>
+            </div>
+          </div>
+          <div class="hero-slide__quote">
+            <span class="accent-badge">New shopping flow</span>
+            <p class="hero-slide__quote-copy">Real storefront energy means less interruption. The bag stays open while the account step stays where it belongs: checkout.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="hero-surface hero-slide hero-slide--sage">
+          <div class="hero-copy">
+            <p class="hero-kicker">For sellers with good taste</p>
+            <h2 class="hero-title">List the pieces you no longer wear and let ReTrend curate the presentation.</h2>
+            <p class="hero-description">Seller requests, approved product flows, and cleaner product cards make the marketplace feel more polished on both sides.</p>
+            <div class="hero-actions">
+              <a href="/request-seller" class="hero-button hero-button--primary">Request seller access</a>
+              <a href="/admin_login" class="hero-button hero-button--secondary">Admin portal</a>
+            </div>
+          </div>
+          <div class="hero-slide__stack">
+            <div class="hero-stat-card floating-card">
+              <span class="hero-stat-value">Seller-ready</span>
+              <span class="hero-stat-label">Approval-based listings with a cleaner storefront finish</span>
+            </div>
+            <div class="hero-stat-card reveal-on-scroll">
+              <span class="hero-stat-value">Better admin view</span>
+              <span class="hero-stat-label">Sharper dashboard cards, product tables, and improved navigation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev hero-slider-prev"></div>
+    <div class="swiper-button-next hero-slider-next"></div>
+    <div class="swiper-pagination hero-slider-pagination"></div>
+  </div>
+</section>
+
+<section class="section-shell px-4" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto story-panel">
+    <div>
+      <p class="section-tag">Why ReTrend</p>
+      <h2 class="section-title">A calmer alternative to chaotic resale feeds.</h2>
+    </div>
+    <p class="section-copy">ReTrend started with a simple idea: good clothing should circulate, not disappear after one owner. We built a cleaner marketplace for pre-loved pieces that still feel current, wearable, and worth collecting.</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto spotlight-grid mt-8">
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">01</span>
+      <h3>Curated approval flow</h3>
+      <p>Only approved items make it live, so the storefront feels edited instead of cluttered.</p>
+    </article>
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">02</span>
+      <h3>Seller-friendly growth</h3>
+      <p>Request access, list pieces, and build trust through quality listings and polished product imagery.</p>
+    </article>
+    <article class="spotlight-card reveal-on-scroll">
+      <span class="spotlight-number">03</span>
+      <h3>Style with less waste</h3>
+      <p>Shop better pieces for longer use cycles, lower waste, and a more personal wardrobe.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-shell px-4" id="featured-collection">
+  <div class="section-heading text-center" data-aos="fade-up">
+    <p class="section-tag">Featured edit</p>
+    <h2 class="section-title">The pieces setting the tone this week</h2>
+    <p class="section-copy section-copy--center">A tighter selection of standout finds, chosen for shape, condition, and price.</p>
+  </div>
+  <div class="swiper featuredSwiper product-swiper px-2 md:px-6 mt-10">
+  <div class="swiper-wrapper">
+    
+    <div class="swiper-slide flex items-center justify-center">
+      <a href="/buy" class="showcase-more-card">Explore the full collection</a>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+
+</section>
+
+<section class="section-shell px-4">
+  <div class="editorial-banner max-w-7xl mx-auto" data-aos="zoom-in-up">
+    <div>
+      <p class="section-tag section-tag--light">New this week</p>
+      <h2 class="section-title section-title--light">Fresh arrivals with a cleaner silhouette and faster turnover.</h2>
+    </div>
+    <a href="/buy" class="hero-button hero-button--light">Browse all arrivals</a>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 px-2 pt-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+    
+
+
+  </div>
+</section>
+
+<section class="section-shell px-4">
+  <div class="section-heading text-center" data-aos="fade-up">
+    <p class="section-tag">Sale rail</p>
+    <h2 class="section-title">Marked-down pieces worth catching early</h2>
+    <p class="section-copy section-copy--center">Discounted finds that still keep the shape, finish, and versatility you want.</p>
+  </div>
+  
+<div class="swiper discountedSwiper product-swiper px-2 md:px-6 mt-10">
+  <div class="swiper-wrapper">
+    
+
+    <div class="swiper-slide flex items-center justify-center">
+      <a href="/buy" class="showcase-more-card">See every discounted piece</a>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+</section>
+
+<section class="section-shell px-4">
+  <div class="max-w-7xl mx-auto cta-grid">
+    <div class="cta-panel" data-aos="fade-right">
+      <p class="section-tag">For sellers</p>
+      <h2 class="section-title">Turn your unused wardrobe into the next best find.</h2>
+      <p class="section-copy">Apply for seller access, upload your best pieces, and let ReTrend handle discovery through a sharper storefront experience.</p>
+      <a href="/request-seller" class="hero-button hero-button--primary">Request seller access</a>
+    </div>
+
+    <div class="faq-panel" data-aos="fade-left">
+      <p class="section-tag">Common questions</p>
+      <div class="faq-stack">
+        <article class="faq-item reveal-on-scroll">
+          <h3>Can I sell or trade my clothes?</h3>
+          <p>Yes. Apply for seller access first, then list pieces that meet the quality and presentation standards.</p>
+        </article>
+        <article class="faq-item reveal-on-scroll">
+          <h3>How is product quality checked?</h3>
+          <p>Each item is reviewed before approval, and condition details are shown on the product page.</p>
+        </article>
+        <article class="faq-item reveal-on-scroll">
+          <h3>What happens if something arrives wrong?</h3>
+          <p>If an order arrives damaged or clearly mismatched, contact the team within 7 days for support.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-shell px-4 pb-0">
+  <div class="contact-band max-w-7xl mx-auto" data-aos="fade-up">
+    <div>
+      <p class="section-tag section-tag--light">Stay in touch</p>
+      <h2 class="section-title section-title--light">Get first look access to fresh drops and seller updates.</h2>
+    </div>
+    <form class="contact-band__form">
+      <input type="text" name="name" placeholder="Your name" class="contact-band__input" />
+      <input type="email" name="email" placeholder="Email address" class="contact-band__input" />
+      <button type="submit" class="hero-button hero-button--light">Join the list</button>
+    </form>
+  </div>
+</section>
+
+<div class="overflow-hidden bg-[#102a31] text-white py-3 mt-12">
+  <div class="whitespace-nowrap animate-marquee text-center tracking-[0.25em] uppercase text-xs md:text-sm">
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+      <span class="mx-4 inline-block">New arrivals every week • Approved quality • Circular fashion •</span>
+    
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  if (document.querySelector(".featuredSwiper")) {
+    new Swiper(".featuredSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      speed: 850,
+      navigation: {
+        nextEl: ".featuredSwiper .swiper-button-next",
+        prevEl: ".featuredSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.4 },
+        768: { slidesPerView: 2.6 },
+        1024: { slidesPerView: 4 },
+        1280: { slidesPerView: 5 },
+      },
+    });
+  }
+
+  if (document.querySelector(".discountedSwiper")) {
+    new Swiper(".discountedSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      speed: 850,
+      navigation: {
+        nextEl: ".discountedSwiper .swiper-button-next",
+        prevEl: ".discountedSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1.4 },
+        768: { slidesPerView: 2.6 },
+        1024: { slidesPerView: 4 },
+        1280: { slidesPerView: 5 },
+      },
+    });
+  }
+
+  if (document.querySelector(".heroSlider")) {
+    new Swiper(".heroSlider", {
+      slidesPerView: 1,
+      loop: true,
+      speed: 900,
+      autoplay: {
+        delay: 3800,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".hero-slider-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".hero-slider-next",
+        prevEl: ".hero-slider-prev",
+      },
+      keyboard: {
+        enabled: true,
+      },
+    });
+  }
+</script>
+
+
+<footer class="site-footer mt-20 px-4 pb-10 pt-16">
+  <div class="max-w-7xl mx-auto footer-panel">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr_1fr]">
+      <div class="space-y-5">
+        <p class="footer-eyebrow">Circular fashion, refined</p>
+        <h4 class="footer-title">ReTrend curates pre-loved clothing that still feels worth dressing up for.</h4>
+        <p class="footer-copy">Shop approved pieces, discover discounted finds, and give quality garments a longer, better life.</p>
+      </div>
+
+      <div>
+        <p class="footer-heading">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="/buy">Shop</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/shipping">Shipping</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-heading">Weekly Drop Notes</p>
+        <p class="footer-copy mb-4">New arrivals, resale tips, and limited deals. No clutter.</p>
+        <form class="footer-form">
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input
+            type="email"
+            id="newsletter-email"
+            class="footer-input"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit" class="footer-button">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Designed for thrift, trade, and repeat wear.</p>
+      <p>ReTrend</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Tailwind AOS Support -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    once: true,
+    duration: 900,
+    easing: 'ease-out-cubic'
+  });
+</script>
+<script src="/public/js/script.js"></script>
+</body>
+</html>
+

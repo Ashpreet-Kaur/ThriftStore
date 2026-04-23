@@ -1,0 +1,108 @@
+<%- include("admin_header.ejs") %>
+
+<main class="admin-page max-w-7xl mx-auto px-6 py-10">
+  <div class="admin-panel p-8">
+  <div class="flex min-w-72 gap-3 items-center">
+      <span>
+        <a href="/admin/admin_dashboard" class="inline-flex items-center text-gray-700 hover:text-blue-600 mb-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mt-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+        </a>
+      </span>
+      <div class="mb-8 ms-4">
+        <p class="admin-chip">Inventory table</p>
+        <h2 class="text-3xl font-bold text-gray-700 mt-3">All Products</h2>
+      </div>
+    </div>
+
+  <div class="overflow-x-auto rounded-3xl bg-white/70 border border-slate-200/70 shadow">
+    <table class="admin-table text-left text-sm text-gray-700">
+      <thead class="bg-white/80 border-b">
+        <tr>
+          <th class="px-6 py-3 font-semibold">ID</th>
+          <th class="px-6 py-3 font-semibold">Image</th>
+          <th class="px-6 py-3 font-semibold">Name</th>
+          <th class="px-6 py-3 font-semibold">Category</th>
+          <th class="px-6 py-3 font-semibold">Price</th>
+          <th class="px-6 py-3 font-semibold">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product => { %>
+        <tr>
+          <td class="px-6 py-4"><%= product.cloth_id %></td>
+          <td class="px-6 py-4">
+            <img src="/public/product_images/<%=product.image %>" class="w-16 h-16 object-cover rounded-md" />
+          </td>
+          <td class="px-6 py-4"><%= product.itemName %></td>
+          <td class="px-6 py-4"><span class="admin-pill"><%= product.category %></span></td>
+          <td class="px-6 py-4">₹<%= product.price %></td>
+          <td class="px-6 py-4 space-x-3">
+<button onclick="showModal('<%= encodeURIComponent(JSON.stringify(product)) %>')" class="admin-action">
+  View
+</button>
+
+
+            <form action="/admin/products/delete/<%= product.cloth_id %>" method="POST" class="inline">
+              <button onclick="return confirm('Are you sure you want to delete this product?')" class="admin-action admin-action--danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</main>
+
+<%- include("admin_footer.ejs") %>
+
+<!-- Product Modal -->
+<div id="productModal" class="fixed hidden inset-0 z-50 bg-black bg-opacity-50 items-center justify-center">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-[90%] max-w-xl relative">
+    <button onclick="closeModal()" class="absolute top-2 right-3 text-xl font-bold text-gray-600 hover:text-black">×</button>
+    <h2 class="text-xl font-semibold mb-4 text-gray-800">Product Details</h2>
+    <div class="space-y-2 text-sm text-gray-700">
+      <p><strong>ID:</strong> <span id="modalId"></span></p>
+      <p><strong>Name:</strong> <span id="modalName"></span></p>
+      <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+      <p><strong>Section:</strong> <span id="modalSection"></span></p>
+      <p><strong>Size:</strong> <span id="modalSize"></span></p>
+      <p><strong>Condition:</strong> <span id="modalCondition"></span></p>
+      <p><strong>Price:</strong> ₹<span id="modalPrice"></span></p>
+      <p><strong>Seller Email:</strong> <span id="modalEmail"></span></p>
+      <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+      <img id="modalImage" src="" class="w-40 h-40 object-cover border mt-4 rounded-md" />
+    </div>
+  </div>
+</div>
+
+<script>
+  function showModal(encodedProduct) {
+    const product = JSON.parse(decodeURIComponent(encodedProduct)); // Safely convert back
+
+    document.getElementById('modalId').innerText = product.cloth_id;
+    document.getElementById('modalName').innerText = product.itemName;
+    document.getElementById('modalCategory').innerText = product.category;
+    document.getElementById('modalSection').innerText = product.section;
+    document.getElementById('modalSize').innerText = product.size;
+    document.getElementById('modalCondition').innerText = product.ccondition;
+    document.getElementById('modalPrice').innerText = product.price;
+    document.getElementById('modalEmail').innerText = product.email;
+    document.getElementById('modalStatus').innerText = product.status;
+    document.getElementById('modalImage').src = '/public/product_images/' + product.image;
+
+    const modal = document.getElementById('productModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('productModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+</script>
+
+

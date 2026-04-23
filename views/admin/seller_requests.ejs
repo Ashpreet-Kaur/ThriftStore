@@ -1,0 +1,57 @@
+<%- include("admin_header.ejs") %>
+
+<main class="admin-page max-w-7xl mx-auto px-4 py-8">
+  <div class="admin-panel p-8">
+  <div class="flex items-center gap-3 mb-6 mx-4">
+      <a href="/admin/admin_dashboard" class="inline-flex items-center text-gray-700 hover:text-blue-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+      </a>
+      <div>
+        <p class="admin-chip">Seller approvals</p>
+        <h2 class="text-2xl font-bold text-gray-800 mt-3">Pending Seller Requests</h2>
+      </div>
+    </div>
+
+  <% if (requests.length === 0) { %>
+    <p class="text-gray-600">No pending requests.</p>
+  <% } else { %>
+    <div class="overflow-x-auto rounded-3xl bg-white/70 border border-slate-200/70 shadow-sm">
+      <table class="admin-table text-left text-sm">
+        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+          <tr>
+            <th class="px-6 py-3 border-b">Email</th>
+            <th class="px-6 py-3 border-b">Requested At</th>
+            <th class="px-6 py-3 border-b">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <% requests.forEach(req => { %>
+            <tr class="border-b hover:bg-gray-50 transition">
+              <td class="px-6 py-4"><%= req.email %></td>
+              <td class="px-6 py-4"><%= new Date(req.created_at).toLocaleString() %></td>
+              <td class="px-6 py-4 space-x-2">
+                <form action="/admin/approve-seller" method="POST" class="inline">
+                  <input type="hidden" name="user_id" value="<%= req.user_id %>" />
+                  <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm transition">
+                    Approve
+                  </button>
+                </form>
+                <form action="/admin/reject-seller" method="POST" class="inline">
+                  <input type="hidden" name="user_id" value="<%= req.user_id %>" />
+                  <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition">
+                    Reject
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+  </div>
+</main>
+
+<%- include("admin_footer.ejs") %>

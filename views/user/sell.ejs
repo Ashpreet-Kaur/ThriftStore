@@ -1,0 +1,72 @@
+<%- include("header.ejs") %>
+
+<div class="flex items-center justify-center min-h-[120vh] bg-gray-100">
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+    
+    <!-- Image Section -->
+    <div class="hidden md:block md:w-1/2">
+      <img
+        src="/public/images/sell_clothes.jpg"
+        alt="Sell Clothes Image"
+        class="object-cover h-full w-full"
+      />
+    </div>
+
+    <!-- Form Section -->
+    <div class="w-full md:w-1/2 p-8">
+      <h3 class="text-2xl font-semibold text-center mb-6">List Your Clothing Item</h3>
+
+      <form method="POST" action="/sell" enctype="multipart/form-data" class="space-y-4">
+        
+        <input type="text" name="itemName" placeholder="Item Name" required class="w-full p-2 border rounded" />
+
+        <select name="section" id="sectionSelect" required class="w-full p-2 border rounded">
+          <option value="">Select Section</option>
+          <option value="Men">Men</option>
+          <option value="Women">Women</option>
+          <option value="Kids">Kids</option>
+        </select>
+
+        <select id="categorySelect" name="category" required class="w-full p-2 border rounded">
+          <option value="">Select Category</option>
+        </select>
+
+        <select name="size" required class="w-full p-2 border rounded">
+          <option value="">Select Size</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+
+        <select name="ccondition" required class="w-full p-2 border rounded">
+          <option value="">Select Condition</option>
+          <option value="New">New</option>
+          <option value="Like New">Like New</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="Worn">Worn</option>
+        </select>
+
+        <input type="number" name="price" placeholder="Price" required class="w-full p-2 border rounded" />
+
+        <textarea name="description" placeholder="Description (optional)" class="w-full p-2 border rounded"></textarea>
+
+        <input type="file" name="image" required class="w-full p-2 border rounded" />
+
+        <button type="submit" class="w-full py-2 bg-black text-white font-semibold rounded hover:bg-gray-800 transition">
+          Post for Sale
+        </button>
+      </form>
+
+      <% if (locals.message) { %>
+        <p class="text-center text-green-600 mt-4 font-medium"><%= message %></p>
+      <% } %>
+    </div>
+
+  </div>
+</div>
+
+<%- include("footer.ejs") %>
