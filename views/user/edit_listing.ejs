@@ -44,7 +44,7 @@
       <label class="block text-sm">Change Image (optional)</label>
       <input type="file" name="image" class="w-full" />
       <% if (item.image) { %>
-        <img src="/public/product_images/<%= item.image %>" alt="Old Image" class="h-32 mt-2 rounded" />
+        <img src="/public/product_images/<%= item.image %>" alt="Old Image" class="h-32 mt-2 rounded" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
       <% } %>
     </div>
 

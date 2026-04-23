@@ -2,7 +2,7 @@
 <% newArrivals.forEach(product => { %>
   <article class="product-card reveal-on-scroll">
     <div class="product-card__image-wrap product-card__image-wrap--tall">
-      <img src="/public/product_images/<%= product.image %>" alt="New Arrival" class="product-card__image" />
+      <img src="/public/product_images/<%= product.image %>" alt="New Arrival" class="product-card__image" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
       <span class="product-card__badge product-card__badge--new">New</span>
     </div>
     <div class="product-card__body">

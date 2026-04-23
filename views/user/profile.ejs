@@ -6,9 +6,9 @@
   <div class="flex items-center gap-4 p-6">
     <div class="w-20 h-20 rounded-full overflow-hidden bg-gray-200">
       <% if (user.photo) { %>
-        <img src="/public/user_image/<%= user.photo %>" alt="Profile Photo" class="object-cover w-full h-full" />
+        <img src="/public/user_image/<%= user.photo %>" alt="Profile Photo" class="object-cover w-full h-full" onerror="this.onerror=null;this.src='/public/images/default-profile.jpg';" />
       <% } else { %>
-        <img src="/public/images/default-profile.jpg" alt="Default Profile" class="object-cover w-full h-full" />
+        <img src="/public/images/default-profile.jpg" alt="Default Profile" class="object-cover w-full h-full" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
       <% } %>
     </div>
     <div>

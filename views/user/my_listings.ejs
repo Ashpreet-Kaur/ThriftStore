@@ -15,7 +15,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-8">
     <% clothes.forEach(item => { %>
       <div class="bg-white border rounded-lg h-[70vh] text-center w-72 shadow">
-        <img src="/public/product_images/<%= item.image %>" alt="<%= item.name %>" class="w-full h-80 object-contain rounded my-2">
+        <img src="/public/product_images/<%= item.image %>" alt="<%= item.name %>" class="w-full h-80 object-contain rounded my-2" onerror="this.onerror=null;this.src='/public/images/formimage.avif';">
         <h3 class="font-semibold"><%= item.name %></h3>
         <p class="text-sm text-gray-600">₹ <%= item.price %></p>
         <p class="text-sm">

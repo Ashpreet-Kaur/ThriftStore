@@ -33,7 +33,7 @@
         <tr>
           <td class="px-6 py-4"><%= product.cloth_id %></td>
           <td class="px-6 py-4">
-            <img src="/public/product_images/<%=product.image %>" class="w-16 h-16 object-cover rounded-md" />
+            <img src="/public/product_images/<%=product.image %>" class="w-16 h-16 object-cover rounded-md" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
           </td>
           <td class="px-6 py-4"><%= product.itemName %></td>
           <td class="px-6 py-4"><span class="admin-pill"><%= product.category %></span></td>
@@ -73,7 +73,7 @@
       <p><strong>Price:</strong> ₹<span id="modalPrice"></span></p>
       <p><strong>Seller Email:</strong> <span id="modalEmail"></span></p>
       <p><strong>Status:</strong> <span id="modalStatus"></span></p>
-      <img id="modalImage" src="" class="w-40 h-40 object-cover border mt-4 rounded-md" />
+      <img id="modalImage" src="" class="w-40 h-40 object-cover border mt-4 rounded-md" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
     </div>
   </div>
 </div>
@@ -91,7 +91,12 @@
     document.getElementById('modalPrice').innerText = product.price;
     document.getElementById('modalEmail').innerText = product.email;
     document.getElementById('modalStatus').innerText = product.status;
-    document.getElementById('modalImage').src = '/public/product_images/' + product.image;
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = '/public/product_images/' + product.image;
+    modalImage.onerror = function () {
+      this.onerror = null;
+      this.src = '/public/images/formimage.avif';
+    };
 
     const modal = document.getElementById('productModal');
     modal.classList.remove('hidden');

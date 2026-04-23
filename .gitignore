@@ -1,5 +1,4 @@
 node_modules/
 .env
-public/product_images/
-public/user_image/
+
 npx

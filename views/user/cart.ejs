@@ -30,7 +30,7 @@
         <div class="grid grid-cols-1 gap-6">
           <% items.forEach(item => { %>
             <article class="product-card !flex-row !overflow-hidden !rounded-[1.7rem] !bg-white/80 !shadow-[0_18px_50px_rgba(16,42,49,0.12)]">
-              <img src="/public/product_images/<%= item.image %>" alt="<%= item.itemName %>" class="w-full md:w-52 h-52 object-cover" />
+              <img src="/public/product_images/<%= item.image %>" alt="<%= item.itemName %>" class="w-full md:w-52 h-52 object-cover" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
               <div class="flex flex-1 flex-col justify-between p-6">
                 <div>
                   <h3 class="product-card__title"><%= item.itemName %></h3>

@@ -44,7 +44,7 @@
               <td class="px-4 py-2 border max-w-[200px] break-words"><%= cloth.description %></td>
               <td class="px-4 py-2 border">
                 <% if (cloth.image) { %>
-                  <img src="/public/product_images/<%= cloth.image %>" alt="Product Image" class="w-24 h-24 object-cover rounded" />
+                  <img src="/public/product_images/<%= cloth.image %>" alt="Product Image" class="w-24 h-24 object-cover rounded" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
                 <% } else { %>
                   <span class="text-gray-500">No image</span>
                 <% } %>

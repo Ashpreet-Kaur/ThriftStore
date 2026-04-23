@@ -122,6 +122,7 @@
                   src="/public/product_images/<%= item.image %>"
                   alt="<%= item.itemName %>"
                   class="w-full h-64 object-cover"
+                  onerror="this.onerror=null;this.src='/public/images/formimage.avif';"
                 />
               </div>
               <div class="p-4">
