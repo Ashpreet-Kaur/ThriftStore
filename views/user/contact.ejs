@@ -17,55 +17,44 @@
     </div>
     <div class="hero-visual">
       <div class="hero-visual__card hero-visual__card--main">
-        <img src="/public/images/shopNow.avif" alt="Contact ReTrend" class="hero-visual__image" />
+        <img src="/public/images/shopNow.avif" alt="Contact ReTrend" class="hero-visual__image" onerror="rtFallback(this)" data-name="fashion shopping women" />
       </div>
     </div>
   </section>
 
   <section class="section-shell max-w-7xl mx-auto">
     <div class="cta-grid">
+      <!-- Contact Form -->
       <div class="cta-panel">
         <p class="section-tag">Send a message</p>
         <h2 class="section-title">Reach out directly</h2>
-
-        <form class="space-y-4 mt-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="first-name"
-              placeholder="First name"
-              required
-              class="contact-band__input !bg-white !text-slate-800 !border-slate-200"
-            />
-            <input
-              type="text"
-              name="last-name"
-              placeholder="Last name"
-              required
-              class="contact-band__input !bg-white !text-slate-800 !border-slate-200"
-            />
+        <form style="display:grid;gap:1rem;margin-top:1.5rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">First name</label>
+              <input type="text" name="first-name" placeholder="e.g. Alex" required class="rt-input" style="width:100%;" />
+            </div>
+            <div>
+              <label style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">Last name</label>
+              <input type="text" name="last-name" placeholder="e.g. Smith" required class="rt-input" style="width:100%;" />
+            </div>
           </div>
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            required
-            value="<%= session && session.emailid ? session.emailid : '' %>"
-            class="contact-band__input !bg-white !text-slate-800 !border-slate-200 w-full"
-          />
-
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="How can we help you?"
-            class="contact-band__input !bg-white !text-slate-800 !border-slate-200 w-full !rounded-2xl"
-          ></textarea>
-
-          <button type="submit" class="hero-button hero-button--primary">Send Message</button>
+          <div>
+            <label style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">Email address</label>
+            <input type="email" name="email" placeholder="you@example.com" required value="<%= session && session.emailid ? session.emailid : '' %>" class="rt-input" style="width:100%;" />
+          </div>
+          <div>
+            <label style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">Your message</label>
+            <textarea name="message" rows="5" placeholder="How can we help you?" class="rt-input" style="width:100%;"></textarea>
+          </div>
+          <button type="submit" class="hero-button hero-button--primary" style="justify-self:start;">
+            Send Message
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:16px;height:16px;margin-left:0.4rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12zm0 0h7.5" /></svg>
+          </button>
         </form>
       </div>
 
+      <!-- Support info -->
       <div class="faq-panel">
         <p class="section-tag">Support information</p>
         <div class="faq-stack mt-4">
@@ -75,11 +64,15 @@
           </article>
           <article class="faq-item">
             <h3>Hours</h3>
-            <p>Monday to Friday, 10:00 AM to 6:00 PM</p>
+            <p>Monday to Friday, 10:00 AM – 6:00 PM</p>
           </article>
           <article class="faq-item">
             <h3>What we can help with</h3>
             <p>Order issues, seller requests, listing updates, profile/account support.</p>
+          </article>
+          <article class="faq-item" style="border-color:var(--border-teal);background:var(--teal-dim);">
+            <h3 style="color:var(--teal-light);">Response time</h3>
+            <p>We aim to respond within 24 hours on business days.</p>
           </article>
         </div>
       </div>

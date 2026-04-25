@@ -1,156 +1,162 @@
 <%- include("header.ejs") %>
 
-<div class="container mx-auto px-6 mt-6 mb-10">
-  <!-- Breadcrumb -->
-  <nav class="mb-4">
-    <ol class="flex space-x-2 text-sm text-gray-600">
-      <li><a href="/" class="hover:underline">Home</a></li>
-      <li>/</li>
-      <li class="text-gray-900 font-medium">Products</li>
-    </ol>
-  </nav>
+<div class="rt-buy-page">
+  <div style="max-width:82rem;margin:0 auto;">
 
-  <!-- Page Heading -->
-  <h2 class="text-3xl font-semibold text-center mb-2">Shop Pre-Loved Fashion</h2>
-  <p class="text-center text-gray-500">Find your favorite pieces from sustainable collections.</p>
+    <!-- Breadcrumb -->
+    <nav class="rt-breadcrumb" style="margin-bottom:1.25rem;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>Products</span>
+    </nav>
 
-  <div class="flex flex-col md:flex-row mt-8 gap-6">
-    <!-- Sidebar -->
-    <div class="w-full md:w-1/4 border-r pr-4 ">
-        <div class="sticky top-24">
-      <p class="text-lg font-semibold border-b pb-2 mb-4">Browse by</p>
-      <ul class="space-y-2">
-        <!-- Men -->
-        <li>
-          <a href="/buy?category=men"
-             class="block font-semibold py-1 hover:text-blue-600 <%= category === 'men' ? 'text-blue-600' : 'text-gray-800' %>">Men</a>
-          <% if (category === 'men' && subcategories.length) { %>
-            <ul class="pl-4 text-sm space-y-1">
-              <% subcategories.forEach(sub => { %>
-                <li>
-                  <a href="/buy?category=men&subcategory=<%= sub %>"
-                     class="block py-1 hover:text-blue-500 <%= subcategory === sub ? 'text-blue-600 font-medium' : 'text-gray-700' %>">
-                    <%= sub %>
-                  </a>
-                </li>
-              <% }) %>
-            </ul>
-          <% } %>
-        </li>
-
-        <!-- Women -->
-        <li>
-          <a href="/buy?category=women"
-             class="block font-semibold py-1 hover:text-pink-600 <%= category === 'women' ? 'text-pink-600' : 'text-gray-800' %>">Women</a>
-          <% if (category === 'women' && subcategories.length) { %>
-            <ul class="pl-4 text-sm space-y-1">
-              <% subcategories.forEach(sub => { %>
-                <li>
-                  <a href="/buy?category=women&subcategory=<%= sub %>"
-                     class="block py-1 hover:text-pink-500 <%= subcategory === sub ? 'text-pink-600 font-medium' : 'text-gray-700' %>">
-                    <%= sub %>
-                  </a>
-                </li>
-              <% }) %>
-            </ul>
-          <% } %>
-        </li>
-
-        <!-- Kids -->
-        <li>
-          <a href="/buy?category=kids"
-             class="block font-semibold py-1 hover:text-green-600 <%= category === 'kids' ? 'text-green-600' : 'text-gray-800' %>">Kids</a>
-          <% if (category === 'kids' && subcategories.length) { %>
-            <ul class="pl-4 text-sm space-y-1">
-              <% subcategories.forEach(sub => { %>
-                <li>
-                  <a href="/buy?category=kids&subcategory=<%= sub %>"
-                     class="block py-1 hover:text-green-500 <%= subcategory === sub ? 'text-green-600 font-medium' : 'text-gray-700' %>">
-                    <%= sub %>
-                  </a>
-                </li>
-              <% }) %>
-            </ul>
-          <% } %>
-        </li>
-
-        <!-- All -->
-        <li>
-          <a href="/buy" class="block py-1 text-gray-700 hover:text-black">All Products</a>
-        </li>
-      </ul>
-      </div>
+    <!-- Page Heading -->
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <p class="hero-kicker">Sustainable fashion</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--text);margin-top:0.5rem;">Shop Pre-Loved Fashion</h2>
+      <p style="color:var(--text-muted);margin-top:0.5rem;">Find your favorite pieces from sustainable collections.</p>
     </div>
 
-    <!-- Product Grid -->
-    <div class="w-full md:w-3/4">
-      <% if (clothes.length === 0) { %>
-        <p class="text-center text-gray-500">No products available at the moment.</p>
-      <% } else { %>
-        <!-- Top Bar -->
-        <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
-          <p class="text-gray-700 text-sm"><%= clothes.length %> Products</p>
-          <form method="GET" action="/buy" class="flex items-center space-x-2">
-            <% if (category) { %>
-              <input type="hidden" name="category" value="<%= category %>">
-            <% } %>
-            <% if (subcategory) { %>
-              <input type="hidden" name="subcategory" value="<%= subcategory %>">
-            <% } %>
-            <label for="sort" class="text-sm font-medium">Sort by:</label>
-            <select name="sort" id="sort"
-              class="border rounded px-2 py-1 text-sm text-gray-700"
-              onchange="this.form.submit()">
-              <option value="">Recommended</option>
-              <option value="price_asc" <%= sort === 'price_asc' ? 'selected' : '' %>>Price: Low to High</option>
-              <option value="price_desc" <%= sort === 'price_desc' ? 'selected' : '' %>>Price: High to Low</option>
-              <option value="name_asc" <%= sort === 'name_asc' ? 'selected' : '' %>>Name: A-Z</option>
-              <option value="name_desc" <%= sort === 'name_desc' ? 'selected' : '' %>>Name: Z-A</option>
-            </select>
-          </form>
-        </div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;" class="buy-layout">
 
-        <!-- Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <% clothes.forEach(item => { %>
-            <div class="bg-white shadow rounded overflow-hidden">
-              <div class="relative">
-                <% if (item.onSale) { %>
-                  <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">Sale</span>
-                <% } %>
-                <img
-                  src="/public/product_images/<%= item.image %>"
-                  alt="<%= item.itemName %>"
-                  class="w-full h-64 object-cover"
-                  onerror="this.onerror=null;this.src='/public/images/formimage.avif';"
-                />
-              </div>
-              <div class="p-4">
-                <h5 class="font-semibold text-lg mb-1"><%= item.itemName %></h5>
-                <% if (item.new_price && item.new_price < item.price) { %>
-  <span class="text-sm text-red-500 line-through">₹<%= item.price %></span>
-  <soan class="text-lg font-bold text-gray-900">₹<%= item.new_price %></span>
-<% } else { %>
-  <p class="text-lg font-bold text-gray-900">₹<%= item.price %></p>
-<% } %>
+      <!-- Sidebar -->
+      <aside class="rt-sidebar" style="width:100%;">
+        <p class="rt-sidebar__heading">Browse by</p>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.25rem;">
 
-                <div class="flex gap-2">
-                  <a href="/view_product/<%= item.cloth_id %>" class="w-1/2 text-center border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-100 text-sm">View Now</a>
-                  <form action="/cart/add/<%= item.cloth_id %>" method="POST" class="w-1/2">
-                    <button type="submit"
-                      class="w-full text-sm border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-100">
-                      Add to Cart
-                    </button>
-                  </form>
+          <!-- Men -->
+          <li>
+            <a href="/buy?category=men"
+               class="rt-sidebar-parent <%= category === 'men' ? 'active' : '' %>">Men</a>
+            <% if (category === 'men' && subcategories.length) { %>
+              <ul class="rt-sub-list">
+                <% subcategories.forEach(sub => { %>
+                  <li>
+                    <a href="/buy?category=men&subcategory=<%= sub %>"
+                       class="rt-sidebar-link <%= subcategory === sub ? 'active' : '' %>">
+                      <%= sub %>
+                    </a>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </li>
+
+          <!-- Women -->
+          <li>
+            <a href="/buy?category=women"
+               class="rt-sidebar-parent <%= category === 'women' ? 'active' : '' %>">Women</a>
+            <% if (category === 'women' && subcategories.length) { %>
+              <ul class="rt-sub-list">
+                <% subcategories.forEach(sub => { %>
+                  <li>
+                    <a href="/buy?category=women&subcategory=<%= sub %>"
+                       class="rt-sidebar-link <%= subcategory === sub ? 'active' : '' %>">
+                      <%= sub %>
+                    </a>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </li>
+
+          <!-- Kids -->
+          <li>
+            <a href="/buy?category=kids"
+               class="rt-sidebar-parent <%= category === 'kids' ? 'active' : '' %>">Kids</a>
+            <% if (category === 'kids' && subcategories.length) { %>
+              <ul class="rt-sub-list">
+                <% subcategories.forEach(sub => { %>
+                  <li>
+                    <a href="/buy?category=kids&subcategory=<%= sub %>"
+                       class="rt-sidebar-link <%= subcategory === sub ? 'active' : '' %>">
+                      <%= sub %>
+                    </a>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </li>
+
+          <li style="margin-top:0.5rem;">
+            <a href="/buy" class="rt-sidebar-link <%= !category ? 'active' : '' %>">All Products</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Product Grid -->
+      <div style="flex:1;min-width:0;">
+        <% if (clothes.length === 0) { %>
+          <p class="rt-empty">No products available at the moment.</p>
+        <% } else { %>
+
+          <!-- Sort Bar -->
+          <div class="rt-sort-bar">
+            <p style="color:var(--text-muted);font-size:0.88rem;font-family:'Space Grotesk',sans-serif;">
+              <span style="color:var(--teal);font-weight:700;"><%= clothes.length %></span> Products
+            </p>
+            <form method="GET" action="/buy" style="display:flex;align-items:center;gap:0.65rem;">
+              <% if (category) { %><input type="hidden" name="category" value="<%= category %>"><% } %>
+              <% if (subcategory) { %><input type="hidden" name="subcategory" value="<%= subcategory %>"><% } %>
+              <label for="sort" style="font-family:'Space Grotesk',sans-serif;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;">Sort by</label>
+              <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="">Recommended</option>
+                <option value="price_asc"  <%= sort === 'price_asc'  ? 'selected' : '' %>>Price: Low → High</option>
+                <option value="price_desc" <%= sort === 'price_desc' ? 'selected' : '' %>>Price: High → Low</option>
+                <option value="name_asc"   <%= sort === 'name_asc'   ? 'selected' : '' %>>Name: A–Z</option>
+                <option value="name_desc"  <%= sort === 'name_desc'  ? 'selected' : '' %>>Name: Z–A</option>
+              </select>
+            </form>
+          </div>
+
+          <!-- Cards Grid -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;">
+            <% clothes.forEach(item => { %>
+              <div class="rt-product-card" style="position:relative;">
+                <div style="position:relative;overflow:hidden;">
+                  <% if (item.onSale) { %>
+                    <span class="rt-product-card__badge-sale">Sale</span>
+                  <% } %>
+                  <img
+                    src="/public/product_images/<%= item.image %>"
+                    alt="<%= item.itemName %>"
+                    data-name="<%= item.itemName %>"
+                    style="width:100%;height:15rem;object-fit:cover;transition:transform 420ms ease;display:block;"
+                    onerror="rtFallback(this)"
+                  />
+                </div>
+                <div class="rt-product-card__body">
+                  <p class="rt-product-card__name"><%= item.itemName %></p>
+                  <p>
+                    <% if (item.new_price && item.new_price < item.price) { %>
+                      <span class="rt-product-card__old-price">₹<%= item.price %></span>
+                      <span class="rt-product-card__price">₹<%= item.new_price %></span>
+                    <% } else { %>
+                      <span class="rt-product-card__price">₹<%= item.price %></span>
+                    <% } %>
+                  </p>
+                  <div class="rt-product-card__actions">
+                    <a href="/view_product/<%= item.cloth_id %>" class="rt-btn-view">View</a>
+                    <form action="/cart/add/<%= item.cloth_id %>" method="POST" style="flex:1;">
+                      <button type="submit" class="rt-btn-cart" style="width:100%;">Add to Cart</button>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% }) %>
-        </div>
-      <% } %>
-    </div>
-  
+            <% }) %>
+          </div>
+
+        <% } %>
+      </div>
+    </div><!-- .buy-layout -->
   </div>
 </div>
+
+<style>
+  @media (min-width: 768px) {
+    .buy-layout { flex-direction: row !important; }
+    .buy-layout aside.rt-sidebar { width: 16rem !important; flex-shrink: 0; }
+  }
+</style>
 
 <%- include("footer.ejs") %>

@@ -1,6 +1,6 @@
 <%- include("header.ejs") %>
 
-<div class="container profile-container d-block mt-5 ms-10">
+<div class="container profile-container d-block mt-5 section-shell px-3">
   <div class="flex min-w-72 gap-3 mx-8 mt-4">
     <span>
       <a href="/profile" class="inline-flex items-center text-gray-700 hover:text-blue-600 mb-4">
@@ -9,16 +9,16 @@
         </svg>
       </a>
     </span>
-    <h2 class="text-2xl font-semibold mb-6">My Listings</h2>
+    <h2 class="section-title" style="font-size:2rem;">My Listings</h2>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-8">
     <% clothes.forEach(item => { %>
-      <div class="bg-white border rounded-lg h-[70vh] text-center w-72 shadow">
-        <img src="/public/product_images/<%= item.image %>" alt="<%= item.name %>" class="w-full h-80 object-contain rounded my-2" onerror="this.onerror=null;this.src='/public/images/formimage.avif';">
-        <h3 class="font-semibold"><%= item.name %></h3>
-        <p class="text-sm text-gray-600">₹ <%= item.price %></p>
-        <p class="text-sm">
+      <div class="rt-product-card h-[70vh] text-center w-72" style="padding:0.4rem;">
+        <img src="/public/product_images/<%= item.image %>" alt="<%= item.name %>" data-name="<%= item.name %>" class="w-full h-80 object-contain rounded my-2" onerror="rtFallback(this)">
+        <h3 class="rt-product-card__name" style="padding:0 0.6rem;"><%= item.name %></h3>
+        <p class="rt-product-card__price">₹ <%= item.price %></p>
+        <p class="text-sm" style="color:var(--text-soft);">
           Status:
           <% if (item.status === 'approved') { %>
             <span class="text-green-600 font-medium">Approved</span>
@@ -28,14 +28,14 @@
             <span class="text-red-600 font-medium">Rejected</span>
           <% } %>
         </p>
-        <div class="flex gap-2 ms-12 mt-4">
+        <div class="rt-product-card__actions" style="padding:0 0.6rem 0.8rem;">
           <a href="/edit_listing/<%= item.cloth_id %>">
-            <button type="button" class="w-24 text-center border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-800 hover:text-white">
+            <button type="button" class="rt-btn-view" style="width:100%;">
               Change
             </button>
           </a>
-          <form action="/delete_listing/<%= item.cloth_id %>" method="POST" class="inline-block">
-            <button type="submit" class="w-24 text-center border border-gray-700 text-gray-800 py-1 rounded hover:bg-gray-800 hover:text-white">
+          <form action="/delete_listing/<%= item.cloth_id %>" method="POST" class="inline-block" style="flex:1;">
+            <button type="submit" class="rt-btn-cart" style="width:100%;">
               Delete
             </button>
           </form>

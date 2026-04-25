@@ -8,59 +8,71 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Font -->
+  <!-- Google Fonts: Playfair Display · DM Sans · Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/public/css/style.css" />
   <link rel="stylesheet" href="/public/css/retrend-ui.css" />
+  <!-- AOS animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 
-<body class="retrend-shell bg-stone-50 text-slate-900">
+<body class="retrend-shell">
   <div class="ambient-orb ambient-orb-one"></div>
   <div class="ambient-orb ambient-orb-two"></div>
-  <nav class="site-nav px-4 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+  <div class="ambient-orb ambient-orb-three"></div>
+
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <!-- Logo -->
       <a href="/" class="brand-mark">
-        <span class="brand-mark__title">ReTrend</span>
+        <span class="brand-mark__title">Re<em>Trend</em></span>
         <span class="brand-mark__subtitle">Second life for standout style</span>
       </a>
 
+      <!-- Hamburger (mobile) -->
       <button
         id="menu-toggle"
         class="menu-toggle md:hidden focus:outline-none"
         type="button"
         aria-label="Toggle navigation"
       >
-        <div class="w-6 h-0.5 bg-white mb-1"></div>
-        <div class="w-6 h-0.5 bg-white mb-1"></div>
-        <div class="w-6 h-0.5 bg-white"></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </button>
 
+      <!-- Nav links -->
       <div
         id="menu"
-        class="menu-panel hidden md:flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-gray-50 text-base md:text-lg mt-4 md:mt-0"
+        class="nav-links hidden md:flex"
       >
         <a href="/" class="nav-link">Home</a>
         <a href="/buy" class="nav-link">Explore</a>
         <a href="/about" class="nav-link">About</a>
         <a href="/contact" class="nav-link">Contact</a>
-        <a href="/cart" class="nav-link">Cart</a>
+        <a href="/cart" class="nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor" style="width:15px;height:15px;">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+          </svg>
+          Cart
+        </a>
 
         <% if (user) { %>
           <a href="/sell" class="nav-link">Sell</a>
           <a href="/profile" class="nav-link">Profile</a>
-          <a href="/logout" class="nav-link nav-link--cta">Logout</a>
+          <a href="/logout" class="nav-cta">Logout</a>
         <% } else { %>
-          <a href="/login" class="nav-link nav-link--cta flex items-center gap-1 justify-center">
+          <a href="/login" class="nav-cta">
             Sign In
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              stroke-width="1.5" stroke="currentColor" style="width:14px;height:14px;">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0" />
             </svg>
@@ -71,6 +83,7 @@
   </nav>
 
   <script>
+    // Mobile menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
 
@@ -79,5 +92,49 @@
         menu.classList.toggle('hidden');
         menu.classList.toggle('menu-panel--open');
       });
+    }
+
+    // Scroll-aware nav: add 'scrolled' class for frosted glass effect
+    const siteNav = document.getElementById('site-nav');
+    if (siteNav) {
+      const onScroll = () => {
+        if (window.scrollY > 40) {
+          siteNav.classList.add('scrolled');
+        } else {
+          siteNav.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  </script>
+
+  <!-- Smart category-aware image fallback -->
+  <script>
+    var RT_PHOTOS = {
+      'dress|gown|frock':               'photo-1496747611176-843222e1e57c',
+      'saree|sari':                      'photo-1610030469983-98e550d6193c',
+      'kurti|kurta|ethnic|salwar':       'photo-1594938298603-c8148c4b4e73',
+      'blouse|top|tee|t-shirt|shirt':    'photo-1584370848010-d7fe6bc767ec',
+      'jeans|denim|pant|trouser|bottom': 'photo-1542272604-787c3835535d',
+      'jacket|coat|blazer|hoodie|sweater':'photo-1551028719-00167b16eac5',
+      'shoe|sneaker|heel|sandal|boot|footwear':'photo-1542291026-7eec264c27ff',
+      'watch|timepiece':                 'photo-1523275335684-37898b6baf30',
+      'bag|handbag|purse|tote|clutch':   'photo-1548036328-c9fa89d128fa',
+      'sunglass|glasses|eyewear|shades': 'photo-1572635196237-14b3f281503f',
+      'jewel|necklace|ring|earring|bracelet':'photo-1515562141207-7a88fb7ce338',
+      'kid|child|baby|girl|boy':         'photo-1519238263530-99bdd11df2ea',
+      'men|male|man|gent':               'photo-1617137968427-85924c800a22',
+      'women|female|woman|lady|ladies':  'photo-1483985988355-763728e1935b',
+    };
+    function rtFallback(img) {
+      img.onerror = null;
+      var n = ((img.getAttribute('data-name') || '') + ' ' + (img.alt || '')).toLowerCase();
+      for (var keys in RT_PHOTOS) {
+        if (keys.split('|').some(function(k){ return n.indexOf(k) !== -1; })) {
+          img.src = 'https://images.unsplash.com/' + RT_PHOTOS[keys] + '?w=600&q=80&auto=format&fit=crop';
+          return;
+        }
+      }
+      img.src = 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=80&auto=format&fit=crop';
     }
   </script>

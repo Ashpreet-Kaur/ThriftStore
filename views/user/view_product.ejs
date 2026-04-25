@@ -11,7 +11,7 @@
 
     <div class="hero-surface !grid-cols-1 lg:!grid-cols-[0.95fr_1.05fr] !gap-10">
       <div class="hero-visual__card hero-visual__card--main !shadow-none">
-        <img src="/public/product_images/<%= product.image %>" alt="<%= product.itemName %>" class="hero-visual__image !h-[620px]" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
+        <img src="/public/product_images/<%= product.image %>" alt="<%= product.itemName %>" data-name="<%= product.itemName %>" class="hero-visual__image !h-[620px]" onerror="rtFallback(this)" />
       </div>
 
       <div class="flex flex-col justify-center">

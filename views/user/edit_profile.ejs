@@ -1,78 +1,62 @@
 <%- include("header.ejs") %>
 
-<div class="flex justify-center items-center px-4 py-10">
-  <form action="/edit_profile" method="POST" enctype="multipart/form-data" class="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 space-y-6">
-    
-    <h2 class="text-xl font-bold text-center">My Profile</h2>
-
-    <!-- Name -->
-    <div>
-      <label class="block text-sm font-medium mb-1">*Name</label>
-      <input type="text" name="name" value="<%= user.name %>" required class="w-full border border-gray-300 rounded-md px-4 py-2">
-    </div>
-
-    <!-- Birthday -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Birthday</label>
-      <input type="text" name="dob" value="<%= user.dob || '' %>" placeholder="DD-MM-YYYY" class="w-full border border-gray-300 rounded-md px-4 py-2">
-    </div>
-
-    <!-- Gender -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Gender</label>
-      <div class="flex space-x-4 mt-2">
-        <label class="flex items-center space-x-1">
-          <input type="radio" name="gender" value="Male" <%= user.gender === 'Male' ? 'checked' : '' %>>
-          <span>Male</span>
-        </label>
-        <label class="flex items-center space-x-1">
-          <input type="radio" name="gender" value="Female" <%= user.gender === 'Female' ? 'checked' : '' %>>
-          <span>Female</span>
-        </label>
-        <label class="flex items-center space-x-1">
-          <input type="radio" name="gender" value="Other" <%= user.gender === 'Other' ? 'checked' : '' %>>
-          <span>Other</span>
-        </label>
+<main class="section-shell px-4 pb-8">
+  <section class="rt-form-shell">
+    <form action="/edit_profile" method="POST" enctype="multipart/form-data" class="rt-form-card rt-form-grid" style="max-width:48rem;margin:0 auto;">
+      <div>
+        <p class="hero-kicker">Account center</p>
+        <h2 class="section-title" style="margin-top:0.45rem;">Update Profile</h2>
       </div>
-    </div>
 
-   
-    <!-- Mobile -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Phone Number</label>
-      <input type="text" name="mobile" value="<%= user.mobile %>" class="w-full border border-gray-300 rounded-md px-4 py-2" required>
-    </div>
+      <div class="rt-form-grid-2">
+        <div>
+          <label class="rt-label">Name</label>
+          <input type="text" name="name" value="<%= user.name %>" required class="rt-input" style="width:100%;" />
+        </div>
+        <div>
+          <label class="rt-label">Birthday</label>
+          <input type="text" name="dob" value="<%= user.dob || '' %>" placeholder="DD-MM-YYYY" class="rt-input" style="width:100%;" />
+        </div>
+      </div>
 
-    <!-- Email (Display only) -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Email</label>
-      <input type="text" value="<%= user.email %>" disabled class="w-full border border-gray-300 bg-gray-100 rounded-md px-4 py-2">
-    </div>
+      <div>
+        <label class="rt-label">Gender</label>
+        <div class="rt-radio-wrap">
+          <label><input type="radio" name="gender" value="Male" <%= user.gender === 'Male' ? 'checked' : '' %>> Male</label>
+          <label><input type="radio" name="gender" value="Female" <%= user.gender === 'Female' ? 'checked' : '' %>> Female</label>
+          <label><input type="radio" name="gender" value="Other" <%= user.gender === 'Other' ? 'checked' : '' %>> Other</label>
+        </div>
+      </div>
 
-    <!-- Address -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Address</label>
-      <textarea name="address" class="w-full border border-gray-300 rounded-md px-4 py-2"><%= user.address %></textarea>
-    </div>
+      <div class="rt-form-grid-2">
+        <div>
+          <label class="rt-label">Phone Number</label>
+          <input type="text" name="mobile" value="<%= user.mobile %>" class="rt-input" style="width:100%;" required>
+        </div>
+        <div>
+          <label class="rt-label">Email</label>
+          <input type="text" value="<%= user.email %>" disabled class="rt-input" style="width:100%;background:rgba(255,255,255,0.08);">
+        </div>
+      </div>
 
-    <!-- Profile Photo Upload -->
-    <div>
-      <label class="block text-sm font-medium mb-1">Change Profile Photo</label>
-      <input type="file" name="photo" class="w-full border border-gray-300 rounded-md px-4 py-2">
-    </div>
+      <div>
+        <label class="rt-label">Address</label>
+        <textarea name="address" class="rt-input" style="width:100%;"><%= user.address %></textarea>
+      </div>
 
-    <!-- Submit -->
-    <div class="text-center">
-      <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800">Confirm</button>
-    </div>
+      <div>
+        <label class="rt-label">Change Profile Photo</label>
+        <input type="file" name="photo" class="rt-input" style="width:100%;padding-top:0.55rem;padding-bottom:0.55rem;">
+      </div>
 
-    <!-- Delete Account -->
-    <div class="mt-6 border-t pt-4">
-      <h4 class="font-semibold text-sm text-red-600 mb-1">Delete Account</h4>
-      <p class="text-sm text-gray-600 mb-2">NOTE: Account will NOT BE RECOVERABLE once deleted</p>
-      <button type="submit" formaction="/delete_account" formmethod="POST" class="text-red-600 underline hover:text-red-800">Confirm</button>
-    </div>
-  </form>
-</div>
+      <div style="display:flex;gap:0.85rem;align-items:center;flex-wrap:wrap;">
+        <button type="submit" class="hero-button hero-button--primary">Save Changes</button>
+        <button type="submit" formaction="/delete_account" formmethod="POST" class="rt-danger-btn">Delete Account</button>
+      </div>
+
+      <p class="rt-note">Deleting account is permanent and cannot be undone.</p>
+    </form>
+  </section>
+</main>
 
 <%- include("footer.ejs") %>

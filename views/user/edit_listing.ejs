@@ -1,57 +1,62 @@
 <%- include("header.ejs") %>
 
-<div class="max-w-3xl mx-auto p-8 bg-white shadow rounded my-8">
-  <h2 class="text-xl font-bold mb-6">Edit Listing</h2>
-  <form action="/edit_listing/<%= item.cloth_id %>" method="POST" enctype="multipart/form-data" class="space-y-4">
+<main class="section-shell px-4 pb-8">
+  <section class="rt-form-shell">
+    <div class="rt-form-card" style="max-width:46rem;margin:0 auto;">
+      <p class="hero-kicker">Seller tools</p>
+      <h2 class="section-title" style="margin-top:0.45rem;">Edit Listing</h2>
 
-    <div>
-      <label class="block text-sm">Item Name</label>
-      <input type="text" name="itemName" value="<%= item.itemName %>" class="w-full border p-2 bg-gray-100" readonly />
-    </div>
+      <form action="/edit_listing/<%= item.cloth_id %>" method="POST" enctype="multipart/form-data" class="rt-form-grid" style="margin-top:1.2rem;">
+        <div class="rt-form-grid-2">
+          <div>
+            <label class="rt-label">Item Name</label>
+            <input type="text" name="itemName" value="<%= item.itemName %>" class="rt-input" style="width:100%;background:rgba(255,255,255,0.08);" readonly />
+          </div>
+          <div>
+            <label class="rt-label">Section</label>
+            <input type="text" name="section" value="<%= item.section %>" class="rt-input" style="width:100%;background:rgba(255,255,255,0.08);" readonly />
+          </div>
+        </div>
 
-    <div>
-      <label class="block text-sm">Section</label>
-      <input type="text" name="section" value="<%= item.section %>" class="w-full border p-2 bg-gray-100" readonly />
-    </div>
+        <div>
+          <label class="rt-label">Category</label>
+          <input type="text" name="category" value="<%= item.category %>" class="rt-input" style="width:100%;background:rgba(255,255,255,0.08);" readonly />
+        </div>
 
-    <div>
-      <label class="block text-sm">Category</label>
-      <input type="text" name="category" value="<%= item.category %>" class="w-full border p-2 bg-gray-100" readonly />
-    </div>
+        <div class="rt-form-grid-2">
+          <div>
+            <label class="rt-label" for="ccondition">Condition</label>
+            <select name="ccondition" id="ccondition" class="rt-input" style="width:100%;">
+              <option value="New" <%= item.ccondition === 'New' ? 'selected' : '' %>>New</option>
+              <option value="Like New" <%= item.ccondition === 'Like New' ? 'selected' : '' %>>Like New</option>
+              <option value="Good" <%= item.ccondition === 'Good' ? 'selected' : '' %>>Good</option>
+              <option value="Fair" <%= item.ccondition === 'Fair' ? 'selected' : '' %>>Fair</option>
+              <option value="Worn" <%= item.ccondition === 'Worn' ? 'selected' : '' %>>Worn</option>
+            </select>
+          </div>
+          <div>
+            <label class="rt-label" for="price">Price (INR)</label>
+            <input type="number" id="price" name="price" value="<%= item.price %>" class="rt-input" style="width:100%;" required />
+          </div>
+        </div>
 
-    <div>
-      <label class="block text-sm">Condition</label>
-      <select name="ccondition" class="w-full border p-2">
-        <option value="New" <%= item.ccondition === 'New' ? 'selected' : '' %>>New</option>
-        <option value="Like New" <%= item.ccondition === 'Like New' ? 'selected' : '' %>>Like New</option>
-        <option value="Good" <%= item.ccondition === 'Good' ? 'selected' : '' %>>Good</option>
-        <option value="Fair" <%= item.ccondition === 'Fair' ? 'selected' : '' %>>Fair</option>
-        <option value="Worn" <%= item.ccondition === 'Worn' ? 'selected' : '' %>>Worn</option>
-      </select>
-    </div>
+        <div>
+          <label class="rt-label" for="description">Description</label>
+          <textarea id="description" name="description" class="rt-input" style="width:100%;"><%= item.description %></textarea>
+        </div>
 
-    <div>
-      <label class="block text-sm">Price (₹)</label>
-      <input type="number" name="price" value="<%= item.price %>" class="w-full border p-2" required />
-    </div>
+        <div>
+          <label class="rt-label" for="image">Change Image</label>
+          <input type="file" id="image" name="image" class="rt-input" style="width:100%;padding-top:0.55rem;padding-bottom:0.55rem;" />
+          <% if (item.image) { %>
+            <img src="/public/product_images/<%= item.image %>" alt="Old Image" data-name="<%= item.itemName %>" class="h-32 mt-3 rounded" onerror="rtFallback(this)" />
+          <% } %>
+        </div>
 
-    <div>
-      <label class="block text-sm">Description</label>
-      <textarea name="description" class="w-full border p-2"><%= item.description %></textarea>
+        <button type="submit" class="hero-button hero-button--primary" style="justify-self:start;">Update Listing</button>
+      </form>
     </div>
-
-    <div>
-      <label class="block text-sm">Change Image (optional)</label>
-      <input type="file" name="image" class="w-full" />
-      <% if (item.image) { %>
-        <img src="/public/product_images/<%= item.image %>" alt="Old Image" class="h-32 mt-2 rounded" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
-      <% } %>
-    </div>
-
-    <div>
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
-    </div>
-  </form>
-</div>
+  </section>
+</main>
 
 <%- include("footer.ejs") %>

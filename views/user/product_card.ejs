@@ -1,12 +1,19 @@
-<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
-  <a href="<%= isLoggedIn ? '/buy/' + product.id : '/login' %>">
-    <img src="/public/product_images/<%= product.image %>" alt="<%= product.name %>" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
-    <div class="p-4">
-      <h3 class="text-lg font-semibold mb-2"><%= product.name %></h3>
-     
-     
-      <p class="text-green-600 font-bold">₹ <%= product.price %></p>
+<div class="rt-product-card" style="position:relative;">
+  <div class="product-card__image-wrap" style="position:relative;overflow:hidden;">
+    <img
+      src="/public/product_images/<%= product.image %>"
+      alt="<%= product.name %>"
+      data-name="<%= product.name %>"
+      class="product-card__image"
+      onerror="rtFallback(this)"
+    />
+  </div>
+  <div class="rt-product-card__body">
+    <p class="rt-product-card__name"><%= product.name %></p>
+    <p class="rt-product-card__price">₹ <%= product.price %></p>
+    <div class="rt-product-card__actions">
+      <a href="<%= isLoggedIn ? '/buy/' + product.id : '/login' %>" class="rt-btn-view">View</a>
     </div>
-  </a>
+  </div>
 </div>
 

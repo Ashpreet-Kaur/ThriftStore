@@ -14,7 +14,7 @@
 
       <!-- Image Right -->
       <div class="w-32 h-32 ml-4">
-        <img src="/public/product_images/<%= item.image %>" alt="Product Image" class="w-full h-full object-cover rounded border" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
+        <img src="/public/product_images/<%= item.image %>" alt="<%= item.itemName %>" data-name="<%= item.itemName %>" class="w-full h-full object-cover rounded border" onerror="rtFallback(this)" />
       </div>
     </div>
   <% }); %>

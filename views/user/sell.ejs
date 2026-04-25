@@ -1,72 +1,145 @@
 <%- include("header.ejs") %>
 
-<div class="flex items-center justify-center min-h-[120vh] bg-gray-100">
-  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
-    
-    <!-- Image Section -->
-    <div class="hidden md:block md:w-1/2">
-      <img
-        src="/public/images/sell_clothes.jpg"
-        alt="Sell Clothes Image"
-        class="object-cover h-full w-full"
-      />
-    </div>
+<main class="section-shell px-4 pb-8">
+  <section class="hero-surface max-w-6xl mx-auto !grid-cols-1 lg:!grid-cols-[1fr_1fr]">
+    <div>
+      <p class="hero-kicker">Seller studio</p>
+      <h1 class="hero-title">List your clothing item</h1>
+      <p class="hero-description">Upload details, set the price, and publish your piece for the ReTrend community.</p>
 
-    <!-- Form Section -->
-    <div class="w-full md:w-1/2 p-8">
-      <h3 class="text-2xl font-semibold text-center mb-6">List Your Clothing Item</h3>
+      <form method="POST" action="/sell" enctype="multipart/form-data" class="rt-form-grid" style="margin-top:1.5rem;max-width:36rem;">
+        <div>
+          <label class="rt-label" for="itemName">Item Name</label>
+          <input type="text" id="itemName" name="itemName" placeholder="e.g. Denim Jacket" required class="rt-input" style="width:100%;" />
+        </div>
 
-      <form method="POST" action="/sell" enctype="multipart/form-data" class="space-y-4">
-        
-        <input type="text" name="itemName" placeholder="Item Name" required class="w-full p-2 border rounded" />
+        <div class="rt-form-grid-2">
+          <div>
+            <label class="rt-label" for="sectionSelect">Section</label>
+            <select name="section" id="sectionSelect" required class="rt-input" style="width:100%;">
+              <option value="">Select Section</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Kids">Kids</option>
+            </select>
+          </div>
+          <div>
+            <label class="rt-label" for="categorySelect">Category</label>
+            <select id="categorySelect" name="category" required class="rt-input" style="width:100%;">
+              <option value="">Select Category</option>
+            </select>
+          </div>
+        </div>
 
-        <select name="section" id="sectionSelect" required class="w-full p-2 border rounded">
-          <option value="">Select Section</option>
-          <option value="Men">Men</option>
-          <option value="Women">Women</option>
-          <option value="Kids">Kids</option>
-        </select>
+        <div class="rt-form-grid-2">
+          <div>
+            <label class="rt-label" for="size">Size</label>
+            <select name="size" id="size" required class="rt-input" style="width:100%;">
+              <option value="">Select Size</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+          </div>
+          <div>
+            <label class="rt-label" for="ccondition">Condition</label>
+            <select name="ccondition" id="ccondition" required class="rt-input" style="width:100%;">
+              <option value="">Select Condition</option>
+              <option value="New">New</option>
+              <option value="Like New">Like New</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Worn">Worn</option>
+            </select>
+          </div>
+        </div>
 
-        <select id="categorySelect" name="category" required class="w-full p-2 border rounded">
-          <option value="">Select Category</option>
-        </select>
+        <div>
+          <label class="rt-label" for="price">Price</label>
+          <input type="number" id="price" name="price" placeholder="Price in INR" required class="rt-input" style="width:100%;" />
+        </div>
 
-        <select name="size" required class="w-full p-2 border rounded">
-          <option value="">Select Size</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-        </select>
+        <div>
+          <label class="rt-label" for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Description (optional)" class="rt-input" style="width:100%;"></textarea>
+        </div>
 
-        <select name="ccondition" required class="w-full p-2 border rounded">
-          <option value="">Select Condition</option>
-          <option value="New">New</option>
-          <option value="Like New">Like New</option>
-          <option value="Good">Good</option>
-          <option value="Fair">Fair</option>
-          <option value="Worn">Worn</option>
-        </select>
+        <div>
+          <label class="rt-label" for="image">Product Image</label>
+          <input type="file" id="image" name="image" required class="rt-input" style="width:100%;padding-top:0.55rem;padding-bottom:0.55rem;" />
+        </div>
 
-        <input type="number" name="price" placeholder="Price" required class="w-full p-2 border rounded" />
-
-        <textarea name="description" placeholder="Description (optional)" class="w-full p-2 border rounded"></textarea>
-
-        <input type="file" name="image" required class="w-full p-2 border rounded" />
-
-        <button type="submit" class="w-full py-2 bg-black text-white font-semibold rounded hover:bg-gray-800 transition">
-          Post for Sale
-        </button>
+        <button type="submit" class="hero-button hero-button--primary" style="justify-self:start;">Post For Sale</button>
       </form>
 
       <% if (locals.message) { %>
-        <p class="text-center text-green-600 mt-4 font-medium"><%= message %></p>
+        <p style="margin-top:0.9rem;color:var(--teal-light);font-weight:600;"><%= message %></p>
       <% } %>
     </div>
 
-  </div>
-</div>
+    <div class="hero-visual">
+      <div class="hero-visual__card hero-visual__card--main">
+        <img src="/public/images/sell_clothes.jpg" alt="Sell clothes" data-name="jacket jeans women fashion" class="hero-visual__image" onerror="rtFallback(this)" />
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    const sectionSelect = document.getElementById('sectionSelect');
+    const categorySelect = document.getElementById('categorySelect');
+    if (!sectionSelect || !categorySelect) return;
+
+    const categoriesBySection = {
+      Men: [
+        'Topwear',
+        'Bottomwear',
+        'Casual Shoes',
+        'Accessories',
+        'Ethnic Wear',
+        'Formal Wear',
+        'Sunglasses',
+        'Watches',
+        'Sports Shoes'
+      ],
+      Women: [
+        'Tops',
+        'Bottoms',
+        'Dresses',
+        'Jumpsuits',
+        'Sarees',
+        'Sports Shoes',
+        'Accessories',
+        'Ethnic Wear',
+        'Handbags',
+        'Kurtis',
+        'Sandals',
+        'Kurta Sets',
+        'Jewelery'
+      ],
+      Kids: ['Boys Clothing', 'Girls Clothing', 'Footwear', 'Accessories']
+    };
+
+    function populateCategoryOptions() {
+      const selectedSection = sectionSelect.value;
+      categorySelect.innerHTML = '<option value="">Select Category</option>';
+
+      const list = categoriesBySection[selectedSection] || [];
+      list.forEach(function (category) {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
+      });
+    }
+
+    sectionSelect.addEventListener('change', populateCategoryOptions);
+    populateCategoryOptions();
+  })();
+</script>
 
 <%- include("footer.ejs") %>

@@ -1,70 +1,46 @@
 <%- include("header.ejs") %>
 
-<div class="min-h-screen bg-gray-100 flex items-center justify-center">
-  <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col-reverse md:flex-row w-full max-w-4xl h-[400px]">
-    
-    <!-- Login Form Section -->
-    <div class="w-full md:w-1/2 flex items-center justify-center p-6">
-      <div
-        class="w-full max-w-md"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-        data-aos-easing="ease-in-out"
-      >
-        <h3 class="text-3xl font-bold mb-6 text-gray-800">Login</h3>
-        <form method="POST" action="/login" class="space-y-3 text-lg">
-          <div>
-            <label for="email" class="block font-medium text-gray-900 mb-1">Email *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full border border-gray-300 rounded px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-black"
-            />
-          </div>
+<main class="section-shell px-4 pb-8">
+  <section class="hero-surface max-w-6xl mx-auto !grid-cols-1 lg:!grid-cols-[1fr_1fr]">
+    <div>
+      <p class="hero-kicker">Welcome back</p>
+      <h1 class="hero-title">Sign in to continue your ReTrend journey.</h1>
+      <p class="hero-description">Access your wishlist, cart, orders, and seller tools in one place.</p>
 
-          <div>
-            <label for="password" class="block font-medium text-gray-900 mb-1">Password *</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              class="w-full border border-gray-300 rounded px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-black"
-            />
-          </div>
+      <form method="POST" action="/login" style="display:grid;gap:1rem;margin-top:1.75rem;max-width:34rem;">
+        <div>
+          <label for="email" style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">Email address</label>
+          <input type="email" id="email" name="email" required class="rt-input" style="width:100%;" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label for="password" style="display:block;font-family:'Space Grotesk',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.45rem;">Password</label>
+          <input type="password" id="password" name="password" required class="rt-input" style="width:100%;" placeholder="Enter your password" />
+        </div>
+        <button type="submit" class="hero-button hero-button--primary" style="justify-self:start;">Sign In</button>
+      </form>
 
-          <button
-            type="submit"
-            class="bg-gray-800 text-white py-3 px-4 rounded w-full text-lg hover:bg-gray-800 transition-all"
-          >
-            Login
-          </button>
-        </form>
+      <p style="margin-top:1rem;color:var(--text-soft);">
+        Don&rsquo;t have an account?
+        <a href="/register" style="color:var(--teal-light);text-decoration:underline;">Register here</a>
+      </p>
 
-        <p class="text-center text-base mt-4 text-gray-900">
-          Don’t have an account? 
-          <a href="/register" class="text-blue-600 hover:underline">Register here</a>
-        </p>
+      <% if (locals.message) { %>
+        <p style="margin-top:0.9rem;color:var(--coral-light);font-weight:600;"><%= message %></p>
+      <% } %>
+    </div>
 
-        <% if (locals.message) { %>
-          <p class="text-center text-red-600 font-semibold mt-3"><%= message %></p>
-        <% } %>
+    <div class="hero-visual">
+      <div class="hero-visual__card hero-visual__card--main">
+        <img
+          src="/public/images/shopNow.avif"
+          alt="Sign in"
+          data-name="women fashion"
+          class="hero-visual__image"
+          onerror="rtFallback(this)"
+        />
       </div>
     </div>
-
-    <!-- Image Section -->
-    <div class="w-full md:w-1/2 hidden md:block">
-      <img
-        src="/public/images/contact.png"
-        alt="Auth"
-        class="w-full h-full object-cover"
-      />
-    </div>
-
-  </div>
-</div>
+  </section>
+</main>
 
 <%- include("footer.ejs") %>

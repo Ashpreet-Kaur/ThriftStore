@@ -5,7 +5,7 @@
       <div class="swiper-slide">
         <article class="product-card h-full">
           <div class="product-card__image-wrap">
-            <img src="/public/product_images/<%= product.image %>" alt="Product Image" class="product-card__image" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
+            <img src="/public/product_images/<%= product.image %>" alt="<%= product.itemName || product.name %>" data-name="<%= product.itemName || product.name %>" class="product-card__image" onerror="rtFallback(this)" />
             <span class="product-card__badge product-card__badge--sale">Sale</span>
           </div>
 
@@ -21,7 +21,7 @@
             <p class="product-card__price">₹<%= product.price %></p>
           <% } %>
 
-          <a href="/view_product/<%= product.cloth_id %>" class="product-card__link">Add from details</a>
+          <a href="/view_product/<%= product.cloth_id %>" class="product-card__link">View details</a>
           </div>
         </article>
       </div>

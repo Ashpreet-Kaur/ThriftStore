@@ -1,13 +1,13 @@
 <%- include("header.ejs") %>
 
-<div class="container profile-container d-block mt-5">
+<div class="container profile-container d-block mt-5 section-shell px-2">
   <form method="POST" action="/request-seller">
     <div class="px-10 flex flex-1 justify-center py-5">
       <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
         <div class="flex flex-wrap justify-between gap-3 p-4">
           <div class="flex min-w-72 flex-col gap-3">
-            <h2 class="text-2xl font-bold text-gray-700 mb-4">Become a Seller</h2>
-            <p class="text-[#47569e] text-sm">
+            <h2 class="section-title" style="font-size:2rem;">Become a Seller</h2>
+            <p class="section-copy" style="max-width:52ch;">
               Join our community of sellers and start sharing your unique style with the world. We're always looking for new talent to showcase on our platform.
             </p>
           </div>
@@ -102,7 +102,7 @@
         </div>
 
         <div class="flex px-4 py-3">
-          <button type="submit" class="w-36 bg-gray-800 text-white p-2 mt-2 rounded hover:bg-[#e9a852] transition duration-300">
+          <button type="submit" class="hero-button hero-button--primary">
             Request Access
           </button>
         </div>

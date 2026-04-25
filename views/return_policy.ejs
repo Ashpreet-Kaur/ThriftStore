@@ -1,110 +1,76 @@
 <%- include("user/user_header.ejs") %>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="text-gray-800 bg-white text-[16px] leading-relaxed font-[Inter,sans-serif]">
-  <div class="max-w-4xl mx-auto px-6 py-12">
-
-    <!-- Page Header -->
-    <div class="flex items-center gap-3 mb-8">
-      <a href="/profile" class="text-gray-500 hover:text-blue-600">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<main class="rt-policy-page">
+  <div class="rt-policy-shell">
+    <div class="rt-policy-header">
+      <a href="/profile" class="rt-policy-back" aria-label="Back to profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 19.5L3 12l7.5-7.5M3 12h18" />
         </svg>
       </a>
-      <h1 class="text-3xl font-bold text-gray-900">Return Policy</h1>
-    </div>
-
-    <!-- Intro -->
-    <p class="text-lg text-gray-600 mb-8">
-      Your satisfaction is our priority. If you're not completely happy with your purchase, our return policy makes it easy and hassle-free.
-    </p>
-
-    <!-- Return Conditions -->
-    <h2 class="text-xl font-semibold text-gray-900 mb-4">Return Conditions</h2>
-
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
       <div>
-        <p class="font-semibold text-gray-900 text-lg">Time Frame</p>
-        <p class="text-gray-600 text-base mt-1">Items must be returned within 10 days of delivery to be eligible for a refund or exchange.</p>
+        <p class="hero-kicker">Support</p>
+        <h1 class="rt-policy-title">Return Policy</h1>
       </div>
     </div>
 
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-900 text-lg">Original Condition</p>
-        <p class="text-gray-600 text-base mt-1">Products should be unused, unwashed, and in their original packaging with tags still attached.</p>
-      </div>
-    </div>
+    <p class="rt-policy-intro">Your satisfaction is our priority. If you're not completely happy with your purchase, our return policy makes it easy and hassle-free.</p>
 
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-900 text-lg">Non-Returnable Items</p>
-        <p class="text-gray-600 text-base mt-1">Innerwear, clearance sale items, and customized products are not eligible for returns.</p>
-      </div>
-    </div>
+    <section class="rt-policy-section">
+      <h2 class="rt-policy-heading">Return Conditions</h2>
 
-    <!-- Return Process -->
-    <h2 class="text-xl font-semibold text-gray-900 mt-10 mb-4">Return Process</h2>
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">✓</span>
+        <div>
+          <h3>Time Frame</h3>
+          <p>Items must be returned within 10 days of delivery to be eligible for a refund or exchange.</p>
+        </div>
+      </article>
 
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-900 text-lg">Submit a Return Request</p>
-        <p class="text-gray-600 text-base mt-1">Go to your order history and click “Return” to initiate the request.</p>
-      </div>
-    </div>
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">✓</span>
+        <div>
+          <h3>Original Condition</h3>
+          <p>Products should be unused, unwashed, and in their original packaging with tags still attached.</p>
+        </div>
+      </article>
 
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-900 text-lg">Pack & Ship</p>
-        <p class="text-gray-600 text-base mt-1">Use the provided shipping label and drop off the item at the nearest courier service.</p>
-      </div>
-    </div>
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">✓</span>
+        <div>
+          <h3>Non-Returnable Items</h3>
+          <p>Innerwear, clearance sale items, and customized products are not eligible for returns.</p>
+        </div>
+      </article>
+    </section>
 
-    <div class="flex items-start gap-4 bg-gray-100 rounded-md p-4 mb-4">
-      <div class="bg-blue-100 text-blue-700 rounded-full p-3 w-12 h-12 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-900 text-lg">Refund Process</p>
-        <p class="text-gray-600 text-base mt-1">Once the item is received and verified, the refund will be issued within 5-7 business days.</p>
-      </div>
-    </div>
+    <section class="rt-policy-section">
+      <h2 class="rt-policy-heading">Return Process</h2>
 
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">1</span>
+        <div>
+          <h3>Submit a Return Request</h3>
+          <p>Go to your order history and click Return to initiate the request.</p>
+        </div>
+      </article>
+
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">2</span>
+        <div>
+          <h3>Pack and Ship</h3>
+          <p>Use the provided shipping label and drop off the item at the nearest courier service.</p>
+        </div>
+      </article>
+
+      <article class="rt-policy-item">
+        <span class="rt-policy-icon">3</span>
+        <div>
+          <h3>Refund Process</h3>
+          <p>Once the item is received and verified, the refund will be issued within 5-7 business days.</p>
+        </div>
+      </article>
+    </section>
   </div>
-</body>
-</html>
+</main>
 
 <%- include("user/footer.ejs") %>

@@ -1,69 +1,59 @@
 <%- include("header.ejs") %>
 
-<div class="relative flex min-h-screen flex-col overflow-x-hidden bg-slate-50 font-['Plus_Jakarta_Sans','Noto_Sans',sans-serif] text-lg">
+<main class="rt-profile-page">
+  <div class="rt-profile-shell">
+    <section class="rt-profile-card rt-profile-head">
+      <div class="rt-profile-avatar">
+        <% if (user.photo) { %>
+          <img src="/public/user_image/<%= user.photo %>" alt="Profile Photo" onerror="this.onerror=null;this.src='/public/images/default-profile.jpg';" />
+        <% } else { %>
+          <img src="/public/images/default-profile.jpg" alt="Default Profile" />
+        <% } %>
+      </div>
+      <div>
+        <p class="hero-kicker">User Dashboard</p>
+        <h1 class="rt-profile-name">Welcome, <%= user.name %></h1>
+        <p class="rt-profile-email"><%= user.email %></p>
+      </div>
+    </section>
 
-  <!-- Profile Info -->
-  <div class="flex items-center gap-4 p-6">
-    <div class="w-20 h-20 rounded-full overflow-hidden bg-gray-200">
-      <% if (user.photo) { %>
-        <img src="/public/user_image/<%= user.photo %>" alt="Profile Photo" class="object-cover w-full h-full" onerror="this.onerror=null;this.src='/public/images/default-profile.jpg';" />
-      <% } else { %>
-        <img src="/public/images/default-profile.jpg" alt="Default Profile" class="object-cover w-full h-full" onerror="this.onerror=null;this.src='/public/images/formimage.avif';" />
-      <% } %>
-    </div>
-    <div>
-      <h2 class="text-xl font-semibold text-gray-900">Welcome <%= user.name %></h2>
-      <p class="text-sm text-gray-500"><%= user.email %></p>
-    </div>
+    <section class="rt-profile-card rt-profile-stats">
+      <article class="rt-stat-tile">
+        <p class="rt-stat-value">736</p>
+        <p class="rt-stat-label">Points</p>
+      </article>
+      <article class="rt-stat-tile">
+        <p class="rt-stat-value">1</p>
+        <p class="rt-stat-label">Coupons</p>
+      </article>
+      <article class="rt-stat-tile">
+        <p class="rt-stat-value">₹0</p>
+        <p class="rt-stat-label">Wallet</p>
+      </article>
+      <article class="rt-stat-tile">
+        <p class="rt-stat-value">6</p>
+        <p class="rt-stat-label">Wishlist</p>
+      </article>
+    </section>
+
+    <section class="rt-profile-card">
+      <h2 class="rt-profile-section-title">My Account</h2>
+      <div class="rt-profile-links">
+        <a href="/edit_profile" class="rt-profile-link">My Profile</a>
+        <a href="/my_listings" class="rt-profile-link">My Listings</a>
+        <span class="rt-profile-link rt-profile-link--muted">My Reviews</span>
+        <a href="/settings" class="rt-profile-link">Settings</a>
+      </div>
+    </section>
+
+    <section class="rt-profile-card">
+      <h2 class="rt-profile-section-title">Help Center</h2>
+      <div class="rt-profile-links">
+        <a href="/return_policy" class="rt-profile-link">Return Policy</a>
+        <a href="/shipping" class="rt-profile-link">Shipping & Delivery</a>
+      </div>
+    </section>
   </div>
-
-  <!-- Points / Coupons / Wallet / Wishlist -->
-  <div class="mx-4 bg-white rounded-xl shadow p-8 mb-4 grid grid-cols-4 text-center">
-    <div>
-      <div class="text-lg font-bold mb-3">736</div>
-      <div class="text-sm text-gray-500">Points</div>
-    </div>
-    <div>
-      <div class="text-lg font-bold mb-3">1</div>
-      <div class="text-sm text-gray-500">Coupons</div>
-    </div>
-    <div>
-      <div class="text-lg font-bold mb-3">₹0</div>
-      <div class="text-sm text-gray-500">Wallet</div>
-    </div>
-    <div>
-      <div class="text-lg font-bold mb-3">6</div>
-      <div class="text-sm text-gray-500">Wishlist</div>
-    </div>
-  </div>
-
-  <!-- My Account Section -->
-  <div class="mx-4 bg-white rounded-xl shadow p-6 mb-6">
-    <h2 class="text-lg font-semibold pb-8 mb-2">My Account</h2>
-    <div class="space-y-10">
-      <div class="border-b rounded pb-6">
-        <a href="/edit_profile">My Profile</a>
-      </div>
-      <div class="border-b rounded pb-6">
-        <a href="/my_listings">My Listings</a>
-      </div>
-      <div class="border-b rounded pb-6">
-        My Reviews
-      </div>
-      <div class="border-b rounded pb-6">
-        <a href="/settings">Settings</a>
-      </div>
-
-      <h2 class="text-lg font-semibold pb-6 mb-2">Help Center</h2>
-      <div class="border-b rounded pb-6">
-        <a href="/return_policy">Return Policy</a>
-      </div>
-      <div class="border-b rounded pb-6">
-        <a href="/shipping">Shipping & Delivery</a>
-      </div>
-    </div>
-  </div>
-
-</div>
+</main>
 
 <%- include("footer.ejs") %>
